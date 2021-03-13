@@ -13,19 +13,23 @@ class CreateTableCourseEnglish extends Migration
      */
     public function up()
     {
-        Schema::create('course_english', function (Blueprint $table) {
+        Schema::create('course', function (Blueprint $table) {
             $table->increments('course_id');
             $table->integer('center_id')->unsigned();
-            $table->string('course_name');
-            $table->string('type_education')->nullable(true);
-            $table->string('time_study')->nullable(true);
-            $table->boolean('try_study')->default(1);
-            $table->date('time_start')->nullable(true);
+            $table->string('name');
             $table->double('price');
             $table->double('discount')->default(0);
+            $table->string('type')->nullable(true);
+            $table->integer('number_of_session')->nullable(true);
+            $table->boolean('try_study')->default(1);
+            $table->date('study_time')->nullable(true);
+            $table->string('type_customer')->nullable(true);
             $table->text('description')->nullable(true);
-            $table->integer('number_student')->nullable(true);
-            $table->text('promotion')->nullable(true);
+            $table->string('input_requirement')->nullable(true);
+            $table->string('out_requirement')->nullable(true);
+            $table->integer('input_point')->nullable(true);
+            $table->integer('out_point')->nullable(true);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
@@ -37,6 +41,6 @@ class CreateTableCourseEnglish extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_english');
+        Schema::dropIfExists('course');
     }
 }

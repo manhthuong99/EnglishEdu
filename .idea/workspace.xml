@@ -20,7 +20,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32802c02-9e93-4cb4-8535-f53636635a22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/dashboards/dashboard.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/user/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_135855_create_table_center_english.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_135855_create_table_english_center.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_140836_create_table_review.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_140836_create_table_review.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_140938_create_table_user_customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_140938_create_table_user_customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_141023_create_table_course_english.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_141023_create_table_course_english.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_143535_create_table_type_of_education.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_143925_create_fk_reviews_to_user_customer_and_user_customer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_152049_create_fk_type_of_education_to_center_english.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_152300_create_fk_course_english_to_center_endlish.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/calendar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/charts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/components/buttons.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/components/cards.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/components/components.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/components/grid.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/components/icons.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/components/notifications.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/components/typography.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboards/alternative.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/examples/lock.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/examples/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/examples/pricing.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/examples/profile.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/examples/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/examples/timeline.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/forms/components.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/forms/elements.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/forms/validation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/maps/google.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/maps/vector.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/tables/datatables.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/tables/sortable.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/tables/tables.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/widgets.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +65,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -148,10 +185,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/dashboards" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -176,7 +215,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609076203882</updated>
-      <workItem from="1609076205069" duration="8508000" />
+      <workItem from="1609076205069" duration="8809000" />
+      <workItem from="1609573105642" duration="392000" />
+      <workItem from="1609573510981" duration="28000" />
+      <workItem from="1609573547210" duration="104000" />
+      <workItem from="1609573661381" duration="1632000" />
+      <workItem from="1610885940608" duration="5000" />
+      <workItem from="1610899059508" duration="15000" />
+      <workItem from="1611163912029" duration="44000" />
+      <workItem from="1615622765359" duration="6381000" />
     </task>
     <servers />
   </component>
@@ -193,11 +240,40 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609076223748">
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615625287958">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1609076223748" />
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615625287958" />
+    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609573733566">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="734" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1609573733566" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615627955909">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615627955909" />
+    <state x="720" y="108" key="Diagram.Print.Preview.Dialog" timestamp="1615626587527">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="720" y="108" key="Diagram.Print.Preview.Dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615626587527" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1615626524695">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1615626524695" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1615627189229">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1615627189229" />
+    <state x="859" y="396" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1615625985321">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="859" y="396" key="com.intellij.database.actions.DdlActions$CreateObject$1/0.0.1920.1040@0.0.1920.1040" timestamp="1615625985321" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1615627830635">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1615627830635" />
   </component>
 </project>

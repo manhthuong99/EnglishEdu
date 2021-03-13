@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFkCourseEnglishToCenterEndlish extends Migration
+class CreateTableArea extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateFkCourseEnglishToCenterEndlish extends Migration
      */
     public function up()
     {
-        Schema::table('course_english', function (Blueprint $table) {
-            $table->foreign('center_id')->references('center_id')->on('center_english');
+        Schema::create('area', function (Blueprint $table) {
+            $table->increments('area_id');
+            $table->integer('center_id')->unsigned();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class CreateFkCourseEnglishToCenterEndlish extends Migration
      */
     public function down()
     {
-        Schema::table('course_english', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('area');
     }
 }

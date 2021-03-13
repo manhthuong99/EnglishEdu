@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>fa073678-0377-4661-8d16-0d68ea1c94ee.SCHEMA:english_education</OriginalElement>
+  <nodes>
+    <node x="743.1306989513661" y="282.92216522298634">fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.course</node>
+    <node x="258.6063436678962" y="642.6672639480531">fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.report</node>
+    <node x="490.3450771561645" y="677.8549533177295">fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.area</node>
+    <node x="25.148054760627247" y="281.8297998959956">fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.review</node>
+    <node x="22.0451467268623" y="598.6997742663657">fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.consulting</node>
+    <node x="494.70886391490404" y="284.1220950645611">fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.english_center</node>
+    <node x="255.7955789605653" y="285.89678937334304">fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.user</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.review" target="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.user">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.english_center" target="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.user">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.area" target="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.english_center">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.course" target="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.english_center">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.report" target="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.user">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.consulting" target="fa073678-0377-4661-8d16-0d68ea1c94ee.TABLE:english_education.user">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Balloon" zoom="0.8618677042801557" x="579.0" y="494.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Virtual foreign keys</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

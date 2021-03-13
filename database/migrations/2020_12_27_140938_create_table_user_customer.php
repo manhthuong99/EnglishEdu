@@ -13,13 +13,15 @@ class CreateTableUserCustomer extends Migration
      */
     public function up()
     {
-        Schema::create('user_customer', function (Blueprint $table) {
-            $table->increments('user_customer_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('phone_number');
+        Schema::create('user', function (Blueprint $table) {
+            $table->increments('user_id');
+            $table->string('full_name');
+            $table->string('phone_number')->nullable(true);
             $table->string('email');
             $table->string('password');
+            $table->string('avatar')->nullable();
+            $table->integer('permission')->default(2);
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateTableUserCustomer extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_customer');
+        Schema::dropIfExists('user');
     }
 }
