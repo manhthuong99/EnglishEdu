@@ -35,7 +35,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary border-0 mb-0">
-                    <img src="{{ asset('storage/logo.png') }}">
+                    <img src="{{ asset('assets/img/theme/logo.png') }}">
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
                             <small>Or sign in with credentials</small>
