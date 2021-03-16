@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Argon Dashboard PRO - Premium Bootstrap 4 Admin Template</title>
+    <title>English Vip Pro</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('assets/img/icons/hacker.png') }}" type="image/x-icon">
     <!-- Fonts -->
     @yield('header')
 </head>
