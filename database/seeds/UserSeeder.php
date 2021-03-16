@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $faker = \Faker\Factory::create();
+//        $faker = \Faker\Factory::create();
         DB::table('user')->insert([
             'password' => bcrypt('admin123'),
             'email'=>'mthuong03@gmail.com',
@@ -21,17 +21,17 @@ class UserSeeder extends Seeder
             'avatar' =>'thuongdz.jpg',
             'permission' =>0,
         ]);
-        for ($i = 2; $i < 100; $i++) {
-            DB::table('user')->insert([
-                'password' => bcrypt('test'),
-                'email' => $faker->email,
-                'full_name' => $faker->name,
-                'phone_number' => $faker->phoneNumber,
-                'avatar' => 'avatar-clone.jpg',
-                'status' => 1,
-                'permission' => 1,
-
-            ]);
-        }
+//        for ($i = 2; $i < 100; $i++) {
+//            DB::table('user')->insert([
+//                'password' => bcrypt('test'),
+//                'email' => $faker->email,
+//                'full_name' => $faker->name,
+//                'phone_number' => $faker->phoneNumber,
+//                'avatar' => 'avatar-clone.jpg',
+//                'status' => 1,
+//                'permission' => 1,
+//
+//            ]);
+//        }
     }
 }
