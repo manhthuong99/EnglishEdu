@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
 //        $faker = \Faker\Factory::create();
         DB::table('user')->insert([
             'password' => bcrypt('admin123'),
-            'email'=>'mthuong03@gmail.com',
+            'email'=>'admin',
             'full_name' =>'Manh Thuong',
             'phone_number' =>'0853897558',
             'avatar' =>'thuongdz.jpg',

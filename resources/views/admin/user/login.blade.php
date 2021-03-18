@@ -46,14 +46,14 @@
                     </div>
 
                     <div class="card-body px-lg-5 py-lg-5">
-                        <form role="form" action="{{ route('admin.checkLogin') }}" method="post">
+                        <form role="form" action="{{ route('admin.user.checkLogin') }}" method="post">
                             @csrf
                             <div class="form-group mb-3">
                                 <div class="input-group input-group-merge input-group-alternative">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                        <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                                     </div>
-                                    <input class="form-control" placeholder="Email" type="email" name="email">
+                                    <input class="form-control" placeholder="Tài khoản" type="text" name="email">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -72,7 +72,7 @@
                                 </div>
                             @endif
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4">Sign in</button>
+                                <button type="submit" class="btn btn-primary my-4">Đăng nhập</button>
                             </div>
                         </form>
                     </div>
