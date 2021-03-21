@@ -8765,6 +8765,10 @@ button.bg-darker:focus
 .avatar.rounded-circle img
 {
     border-radius: 50% !important;
+    max-width: 100%;
+    vertical-align: top;
+    object-fit: cover;
+    margin: auto;
 }
 
 .rounded-pill

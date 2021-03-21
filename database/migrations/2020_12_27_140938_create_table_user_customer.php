@@ -19,8 +19,8 @@ class CreateTableUserCustomer extends Migration
             $table->string('phone_number')->nullable(true);
             $table->string('email');
             $table->string('password');
-            $table->string('avatar')->nullable();
-            $table->integer('permission')->default(2);
+            $table->string('avatar')->nullable()->default('avatar-clone.jpg');
+            $table->integer('permission')->default(1);
             $table->integer('status')->default(1);
             $table->timestamps();
         });

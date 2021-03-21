@@ -41,7 +41,6 @@ class CreateFkForAll extends Migration
     public function down()
     {
         Schema::table('review', function (Blueprint $table) {
-            //
         });
     }
 }

@@ -62,7 +62,7 @@
                         <div class="collapse" id="navbar-examples">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/examples/pricing.html" class="nav-link">Tạo mới</a>
+                                    <a href="{{ route('admin.user.create') }}" class="nav-link">Tạo mới</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('admin.user.index') }}" class="nav-link">Danh sách</a>
@@ -79,7 +79,7 @@
                         <div class="collapse" id="navbar-components">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/components/buttons.html" class="nav-link">Danh sách</a>
+                                    <a href="{{ route('admin.center.index') }}" class="nav-link">Danh sách</a>
                                 </li>
                             </ul>
                         </div>
@@ -407,7 +407,7 @@
     <!-- Page content -->
     @yield('main')
 </div>
-@yield('footer')
 </body>
 
+@yield('footer')
 </html>

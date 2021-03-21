@@ -15,12 +15,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/admin/login', function () {
     return view('admin.user.login');
 });
-Route::post('admin/home', 'Admin\User@checkLogin')->name('admin.user.checkLogin');
-Route::get('admin/home', 'Admin\User@logout')->name('admin.user.logout');
+Route::post('/admin/center/district', 'Admin\Center@getDistricts')->name('admin.district');
+Route::post('/admin/home', 'Admin\User@checkLogin')->name('admin.user.checkLogin');
+Route::get('/admin/home', 'Admin\User@logout')->name('admin.user.logout');
 Route::group(['prefix' => 'admin', 'middleware' => ['admin.checkLogin']], function () {
     Route::get('/dashboard', 'Admin\Dashboard@index')->name('admin.dashboards.index');
     Route::get('/user', 'Admin\User@index')->name('admin.user.index');
-    Route::get('/user/{userId}', 'Admin\User@edit')->name('admin.user.edit');
+    Route::get('/user/edit/{userId}', 'Admin\User@edit')->name('admin.user.edit');
+    Route::get('/user/new', 'Admin\User@create')->name('admin.user.create');
+    Route::post('/user/save', 'Admin\User@save')->name('admin.user.save');
+
+    Route::get('/center/new', 'Admin\Center@create')->name('admin.center.create');
+    Route::get('/center', 'Admin\Center@index')->name('admin.center.index');
+    Route::get('/center/edit/{centerId}', 'Admin\Center@edit')->name('admin.center.edit');
+    Route::post('/center/save', 'Admin\Center@save')->name('admin.center.save');
+
     Route::get('/', function () {
         return view('admin.dashboards.dashboard');
     });
