@@ -20,13 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32802c02-9e93-4cb4-8535-f53636635a22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/center/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Center.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Center.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/Center.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/Center.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/center/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/center/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/master.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +222,7 @@
       <workItem from="1616307918614" duration="37062000" />
       <workItem from="1616350750709" duration="99000" />
       <workItem from="1616943536114" duration="210000" />
-      <workItem from="1617202400226" duration="8420000" />
+      <workItem from="1617202400226" duration="9133000" />
     </task>
     <servers />
   </component>
@@ -264,10 +258,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="201" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1616086105566" />
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616324272952">
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617212427936">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1616324272952" />
+    <state x="690" y="274" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1617212427936" />
     <state x="720" y="108" key="Diagram.Print.Preview.Dialog" timestamp="1615626587527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
