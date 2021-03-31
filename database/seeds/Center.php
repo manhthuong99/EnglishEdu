@@ -23,10 +23,12 @@ class Center extends Seeder
                 'address' => $faker->address,
                 'phone_number' => $faker->phoneNumber,
                 'website' => 'test.com',
-                'avatar' => 'center.jpeg',
+                'avatar' => 'center.jpg',
                 'description' => $faker->text,
                 'area_id' => rand(1, 5),
                 'ave_star' => rand(1, 5),
+                'province_id' => rand(1, 63),
+                'district_id' => rand(1, 709),
                 'status' => 1,
                 'created_at' => $faker->dateTime,
             ]);

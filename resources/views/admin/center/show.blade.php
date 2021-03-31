@@ -93,7 +93,7 @@
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                                                  style="width: 100px">
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.user.edit',$center['center_id']) }}">Sửa</a>
+                                                   href="{{ route('admin.center.edit',$center['center_id']) }}">Sửa</a>
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.user.edit',$center['center_id']) }}">Xóa</a>
                                             </div>

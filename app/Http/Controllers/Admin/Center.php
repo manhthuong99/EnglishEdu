@@ -13,17 +13,6 @@ class Center extends Controller
     const ENABLE = 1;
     const CENTER_PERMISSION = 2;
     const USER_PERMISSION = 1;
-    /**
-     * @var \App\Models\User
-     */
-    private $user;
-
-    public function __construct(
-        \App\Models\User $user
-    )
-    {
-        $this->user = $user;
-    }
 
     public function index()
     {
@@ -34,12 +23,16 @@ class Center extends Controller
         echo view('admin.center.show', $data);
     }
 
-    public function edit($userId)
+    public function edit($centerId)
     {
-        $data['users'] = \App\Models\User::where('permission', self::USER_PERMISSION)
-            ->where('user_id', $userId)
+        $data['users'] = \App\Models\User::where('status', self::ENABLE)
+            ->where('permission', [self::CENTER_PERMISSION, self::USER_PERMISSION])
             ->get();
-        return view('admin.user.edit', $data);
+        $data['provinces'] = \App\Models\Province::orderBy('name')
+            ->get();
+        $data['centers'] = \App\Models\Center::where('center_id', $centerId)
+            ->get();
+        return view('admin.center.edit', $data);
     }
 
     public function save(Request $request)

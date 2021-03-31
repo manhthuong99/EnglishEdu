@@ -62,10 +62,10 @@
                         <div class="collapse" id="navbar-examples">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.user.create') }}" class="nav-link">Tạo mới</a>
+                                    <a href="{{ route('admin.user.create') }}" class="nav-link"><i class="ni ni-bold-right"></i>Tạo mới</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.user.index') }}" class="nav-link">Danh sách</a>
+                                    <a href="{{ route('admin.user.index') }}" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
                                 </li>
                             </ul>
                         </div>
@@ -79,7 +79,10 @@
                         <div class="collapse" id="navbar-components">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.center.index') }}" class="nav-link">Danh sách</a>
+                                    <a href="{{ route('admin.center.create') }}" class="nav-link"><i class="ni ni-bold-right"></i>Tạo mới</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.center.index') }}" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
                                 </li>
                             </ul>
                         </div>
@@ -93,10 +96,10 @@
                         <div class="collapse" id="navbar-forms">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/forms/elements.html" class="nav-link">Tạo mới</a>
+                                    <a href="../../pages/forms/elements.html" class="nav-link"><i class="ni ni-bold-right"></i>Tạo mới</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/forms/components.html" class="nav-link">Danh sách</a>
+                                    <a href="../../pages/forms/components.html" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
                                 </li>
                             </ul>
                         </div>
