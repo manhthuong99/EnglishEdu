@@ -94,48 +94,8 @@ class DataSeeder extends Seeder
         'Tuyên Quang', 'Vĩnh Long', 'Vĩnh Phúc',
         'Yên Bái', 'Phú Yên',
     );
-    protected $text = "<div style=\"max-height: 400px; overflow: hidden; will-change: max-height;\"><div><h3>Giới thiệu chung</h3>
-<p>Với 10 năm trong lĩnh vực giáo dục, đặc biệt lĩnh vực đào tạo Anh ngữ và luyện thi IELTS, GLN đã trở thành địa chỉ tin cậy và uy tín với các bạn trẻ. Hơn 50.000 học viên tự tin giao tiếp Anh ngữ, 3000 học viên đạt 7.0 – 8.5 IELTS chính là những con số minh chứng cho thấy sự tin tưởng này hoàn toàn là có cơ sở.</p>
-<h3>Đội ngũ chuyên gia chất lượng, nhiều kinh nghiệm</h3>
-<p>Tại GLN, 100% giáo viên bản ngữ đều có nhiều năm kinh nghiệm đến từ các nước như: Anh, Mỹ, Austraylia, New Zealand… Các thầy, các cô đều luôn tràn đầy tinh thần nhiệt huyết và có trình độ sư phạm và kinh nghiệm giảng dạy lâu năm cho sinh viên quốc tế. Để đảm bảo chất lượng giảng dạy uy tín đến cho học viên, trung tâm GLN đã xây dựng quy trình tuyển chọn và đào tạo giáo viên khắt khe.</p>
-<p style=\"text-align: center\"><picture><source media=\"(max-width: 320px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/320x213_gln-2.jpg\"><source media=\"(max-width: 375px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/375x250_gln-2.jpg\"><source media=\"(max-width: 480px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/480x320_gln-2.jpg\"><source media=\"(max-width: 768px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-2.jpg\"><img class=\"img-fluid\" src=\"\" data-src=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-2.jpg\" alt=\"\"></picture></p>
-<p style=\"text-align: center\"><em>GLN có đội ngũ giáo viên giàu kinh nghiệm đến từ nhiều quốc gia khác nhau</em></p>
-<p style=\"text-align: center\"><picture><source media=\"(max-width: 320px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/320x213_gln-4.jpg\"><source media=\"(max-width: 375px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/375x250_gln-4.jpg\"><source media=\"(max-width: 480px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/480x320_gln-4.jpg\"><source media=\"(max-width: 768px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-4.jpg\"><img class=\"img-fluid\" src=\"\" data-src=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-4.jpg\" alt=\"\"></picture></p>
-<p style=\"text-align: center\"><em>Các thầy cô vẫn luôn tràn đầy nhiệt huyết, giúp đỡ cho mọi học viên</em></p>
-<h3>Giáo trình chuyên sâu, đảm bảo sự tiến bộ rõ rệt trong thời gian ngắn nhất</h3>
-<p>Giáo trình tại GLN luôn được biên soạn và thẩm định kĩ càng nhằm mang đến những kiến thức bổ ích và đa dạng tới học viên. Các tài liệu giảng dạy là những đầu sách nổi tiếng từ các nhà xuất bản uy tín trên thế giới về việc đào tạo tiếng Anh như NXB Đại Học Oxford, NXB Cambridge, Macmillan…</p>
-<p>Các khóa học luôn đa dạng, cung cấp các chiến thuật, thủ thuật làm bài hiệu quả, nội dung luôn được cập nhật thường xuyên theo đề thi quốc tế, đặc biệt với thế mạnh về luyện thi IELTS, chương trình giảng dạy tại GLN cho phép học viên:</p>
-<ul>
-<li>Tiếp cận những chiến thuật hiệu quả cho kì thi IELTS.</li>
-	<li>Nâng cao cả 4 kĩ năng Nghe – Nói – Đọc – Viết.</li>
-	<li>Quen thuộc với các dạng đề IELTS.</li>
-	<li>Kết quả IELTS cao nhất có thể: đảm bảo cho học viên có kết quả cao hơn từ 0.5 đến 1.5 so với kết quả đầu vào.</li>
-</ul>
-<h3>Môi trường Quốc tế – Học là mê</h3>
-<p>Bên cạnh đội ngũ chuyên gia nhiệt tình, luôn cố gắng hết mình vì học viên, GLN còn được biết đến bởi không gian học tập vô cùng sáng tạo – nơi học viên được tiếp thêm niềm đam mê học tiếng Anh bởi không gian đầy màu sắc với những trích dẫn nổi tiếng.</p>
-<p style=\"text-align: center\"><picture><source media=\"(max-width: 320px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/320x213_gln-3.jpg\"><source media=\"(max-width: 375px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/375x250_gln-3.jpg\"><source media=\"(max-width: 480px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/480x320_gln-3.jpg\"><source media=\"(max-width: 768px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-3.jpg\"><img class=\"img-fluid\" src=\"\" data-src=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-3.jpg\" alt=\"\"></picture></p>
-<p style=\"text-align: center\"><em>Tại GLN, không khác gì bạn đang học tại một ngôi trường quốc tế</em></p>
-<p>Ngoài ra, không gian GLN Coffee Book tại chi nhánh GLN Phạm Hùng cũng mang tới những phút giây thư giãn và truyền năng lượng cho học viên sau những giờ học căng thẳng. Toạ lạc trên tầng 12, với view phóng rộng toàn cảnh của cả thành phố, từng chi tiết nhỏ đều được trang trí cẩn thận, với tông màu nóng làm chủ đạo, mỗi góc đều là những góc check – in sống ảo cá tính dành cho các bạn trẻ.</p>
-<p>Hàng trăm đầu sách ngoại văn, phong phú đa dạng về nội dung chủ đề sẽ là điểm dừng chân lý tưởng dành cho các bạn trẻ yêu đọc, thích khám phá những điều mới lạ thú vị về cuộc sống xung quanh. Và menu dài về những thức uống ngon miệng được chế biến đặc biệt theo mùa sẽ là lời chào mời ngọt ngào cho những bạn trẻ ghé thăm quán cà phê sách cá tinh trên cao này. </p>
-<p style=\"text-align: center\"><picture><source media=\"(max-width: 320px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/320x213_gln-1.jpg\"><source media=\"(max-width: 375px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/375x250_gln-1.jpg\"><source media=\"(max-width: 480px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/480x320_gln-1.jpg\"><source media=\"(max-width: 768px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-1.jpg\"><img class=\"img-fluid\" src=\"\" data-src=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-1.jpg\" alt=\"\"></picture></p>
-<p style=\"text-align: center\"><em>Không gian GLN Coffee Book tại chi nhánh GLN Phạm Hùng</em></p>
-<h3>GLN English Club – Sân chơi rèn luyện Anh ngữ dành cho các bạn trẻ</h3>
-<p>Học tiếng Anh, việc có môi trường để giao tiếp và luyện tập là điều thiết yếu quan trọng. Vì thế, GLN đã xây dựng câu lạc bộ tiếng Anh để tăng năng suất học ngoại ngữ cũng như là địa điểm vui chơi, giải trí bổ ích sau những giờ học căng thẳng.</p>
-<p>Câu lạc bộ thường diễn ra vào thứ 7 hàng tuần tại GLN Phạm Hùng.</p>
-<p>Bên cạnh đó, những cuộc thi nội bộ cũng thường xuyên được tổ chức tại GLN như thi ảnh, thi lồng tiếng, thi hùng biện tiếng Anh.</p>
-<h3>Hơn 3000 học viên đạt 7.0 - 8.5 IELTS &amp; những thành tích ấn tượng trong 10 năm qua</h3>
-<p>Đào tạo thành công hơn 50.000 học viên tự tin sử dụng Anh ngữ, gần 3000 học viên đạt điểm cao 7.0 – 8.5 IELTS, GLN trở thành người đồng hành của nhiều thế hệ học sinh sinh viên Việt Nam.<br>
-Đặc biệt, GLN đã vinh dự trở thành đối tác vàng của Hội đồng Anh và IDP, đáp ứng được các yêu cầu khắt khe về chất lượng và cơ sở vật chất để trở thành địa điểm tổ chức kì thi thật IELTS uy tín của IDP.</p>
-<p>Bên cạnh đó, nhằm chuẩn hoá các quy trình đào tạo cũng như mang đến một dịch vụ hoàn hảo nhất, GLN đã vinh dự được tổ chức Bureau Veritas Certification – Anh Quốc công nhận đạt chứng chỉ chất lượng ISO 9001:2008 từ năm 2012. Và lọt Top 100 Thương hiệu Tin dùng Việt Nam 2013.</p>
-<h3>Chia sẻ của học viên GLN</h3>
-<p><strong>Phan Bảo Trâm 8.0 IELTS</strong></p>
-<p><em>\"Đối với mình, bí quyết vàng chính là Luyện tập thật nhiều. Trước đây mỗi tiết học tại GLN, sau khi dạy nội dung bài học mới, thầy cô đều phát bài full Test để ôn lại luôn kiến thức vừa học. Sau đó về nhà, em lại luyện tập lại lần nữa để nắm chắc dạng bài hơn\".</em></p>
-<p style=\"text-align: center\"><picture><source media=\"(max-width: 320px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/320x213_gln-6.jpg\"><source media=\"(max-width: 375px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/375x250_gln-6.jpg\"><source media=\"(max-width: 480px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/480x320_gln-6.jpg\"><source media=\"(max-width: 768px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-6.jpg\"><img class=\"img-fluid\" src=\"\" data-src=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-6.jpg\" alt=\"\"></picture></p>
-<p style=\"text-align: center\"><em>Bạn Phan Bảo Trâm – học viên tại GLN</em></p>
-<p><strong>Nguyễn Hải Yến 8.0 IELTS</strong></p>
-<p><em>“Tham gia khóa học tại GLN chính là chất xúc tác trong quá trình học Anh ngữ của em. Đặc biệt là thầy cô tại đây vô cùng nghiêm khắc với vô số những quy định trước khi vào lớp và về nhà. Tuy nhiên bởi sự nghiêm khắc cũng như nhiệt tình của thầy cô, em thấy được khả năng thực sự của mình khi cô gắng hết sức. Và điểm số 8.0 là món quà em muốn dành tặng thầy cô trong dịp này”.</em></p>
-<p style=\"text-align: center\"><picture><source media=\"(max-width: 320px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/320x213_gln-8.jpg\"><source media=\"(max-width: 375px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/375x250_gln-8.jpg\"><source media=\"(max-width: 480px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/480x320_gln-8.jpg\"><source media=\"(max-width: 768px)\" srcset=\"\" data-srcset=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-8.jpg\"><img class=\"img-fluid\" src=\"\" data-src=\"https://edu2review.com/upload/school-images/trung-tam-anh-ngu-gln/img/about/768x512_gln-8.jpg\" alt=\"\"></picture></p>
-<p style=\"text-align: center\"><em>Bạn Nguyễn Hải Yến – học viên tại GLN</em></p></div></div>";
+    protected $text = "Nội dung khóa học
+Khóa học Tiếng Anh giao tiếp ở giai đoạn cơ bản giúp học viên lấy lại nền tảng phát âm và ngữ pháp quan trọng, phù hợp cho người mất gốc muốn học lại từ đầu.";
     /**
      * Run the database seeders.
      *
@@ -227,7 +187,7 @@ class DataSeeder extends Seeder
                 'type' => $listType[array_rand($listType)],
                 'number_of_session' => rand(10, 20),
                 'try_study' => rand(0, 1),
-                'study_time' => '10/04/2021',
+                'study_time' => '2021/04/10',
                 'type_customer' => $listCustomer[array_rand($listCustomer)],
                 'description' => $this->text,
                 'input_requirement' => 'Không có',
