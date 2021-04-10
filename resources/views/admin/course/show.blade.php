@@ -23,7 +23,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#">Quản lý trung tâm</a></li>
+                                <li class="breadcrumb-item"><a href="#">Quản lý Khóa học</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                             </ol>
                         </nav>
@@ -43,7 +43,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header">
-                        <h3 class="mb-0">DANH SÁCH TRUNG TÂM</h3>
+                        <h3 class="mb-0">DANH SÁCH KHÓA HỌC</h3>
                         @if( session()->get('success'))
                             <div class="success">
                                 <span style="color: green">{{ session()->get('success') }}</span>
@@ -55,34 +55,47 @@
                             <thead class="thead-light">
                             <tr>
                                 <th>STT</th>
-                                <th>Trung tâm</th>
-                                <th>Địa chỉ</th>
-                                <th>Người quản lý</th>
-                                <th>Đánh giá</th>
+                                <th>Khóa Học</th>
+                                <th>Giá</th>
+                                <th>Loại</th>
+                                <th>Loại Học viên</th>
                                 <th>Trạng thái</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             @php( $i = 1)
-                            @foreach( $centers as $center)
+                            @foreach( $courses as $course)
                                 <?php
                                 $color = 'green';
                                 $status = 'Đang hoạt động';
-                                if ($center['status'] == 0) {
+                                if ($course['status'] == 0) {
                                     $color = 'red';
                                     $status = 'Ngừng hoạt động';
                                 }
                                 ?>
                                 <tr>
                                     <td>{{ $i ++ }}</td>
-                                    <td>{{ $center['name'] }}</td>
-                                    <td>{{ $center['address'] }}</td>
-                                    <td>{{  $center['user']['full_name'] }}</td>
-                                    <td><span class="star">{{  $center['ave_star'] }} sao</span></td>
+                                    <td>{{ $course['name'] }}</td>
+                                    <td>{{ $course['price'] }} VNĐ</td>
+                                    <td>{{ $course['type'] }}</td>
+                                    <td>{{ $course['type_customer'] }}</td>
+                                    <td> <span
+                                            style="margin: auto; color: {{ $color }};margin-right: 20px">{{ $status }}</span></td>
                                     <td>
-                                        <span
-                                            style="margin: auto; color: {{ $color }};margin-right: 20px">{{ $status }}</span>
+                                        <div class="dropdown">
+                                        <span class="btn btn-sm btn-icon-only text-danger" role="button"
+                                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </span>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
+                                                 style="width: 100px">
+                                                <a class="dropdown-item"
+                                                   href="{{ route('admin.course.edit',$course['course_id']) }}">Sửa</a>
+                                                <a class="dropdown-item"
+                                                   href="{{ route('admin.user.edit',$course['course_id']) }}">Xóa</a>
+                                            </div>
+                                        </div>
                                     </td>
                                     <td>
                                         <div class="dropdown">
@@ -92,14 +105,13 @@
                                         </span>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                                                  style="width: 100px">
-                                                <a class="dropdown-item" id="show_course"
-                                                   data-id="{{ $center['center_id'] }}"
+                                                <a class="dropdown-item"
                                                    href="#myModal" data-toggle="modal"
                                                    data-target=".bd-example-modal-lg">Xem các khóa học</a>
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.center.edit',$center['center_id']) }}">Sửa</a>
+                                                   href="{{ route('admin.course.edit',$course['course_id']) }}">Sửa</a>
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.user.edit',$center['center_id']) }}">Xóa</a>
+                                                   href="{{ route('admin.course.edit',$course['course_id']) }}">Xóa</a>
                                             </div>
                                         </div>
                                     </td>
@@ -112,87 +124,6 @@
             </div>
         </div>
     </div>
-    <!-- modal -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content lg">
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <!-- Card header -->
-                            <div class="card-header">
-                                <h3 class="mb-0">DANH SÁCH KHÓA HỌC</h3>
-                                @if( session()->get('success'))
-                                    <div class="success">
-                                        <span style="color: green">{{ session()->get('success') }}</span>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="table-responsive py-4">
-                                <table class="table table-flush" id="datatable-basic">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>KHÓA HỌC</th>
-                                        <th>Địa chỉ</th>
-                                        <th>Người quản lý</th>
-                                        <th>Đánh giá</th>
-                                        <th>Trạng thái</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @php( $i = 1)
-                                    @foreach( $centers as $center)
-                                        <?php
-                                        $color = 'green';
-                                        $status = 'Đang hoạt động';
-                                        if ($center['status'] == 0) {
-                                            $color = 'red';
-                                            $status = 'Ngừng hoạt động';
-                                        }
-                                        ?>
-                                        <tr>
-                                            <td>{{ $i ++ }}</td>
-                                            <td>{{ $center['name'] }}</td>
-                                            <td>{{ $center['address'] }}</td>
-                                            <td>{{  $center['user']['full_name'] }}</td>
-                                            <td><span class="star">{{  $center['ave_star'] }} sao</span></td>
-                                            <td>
-                                        <span
-                                            style="margin: auto; color: {{ $color }};margin-right: 20px">{{ $status }}</span>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown">
-                                        <span class="btn btn-sm btn-icon-only text-danger" role="button"
-                                              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v"></i>
-                                        </span>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
-                                                         style="width: 100px">
-                                                        <a class="dropdown-item"
-                                                           href="#myModal" data-toggle="modal"
-                                                           data-target=".bd-example-modal-lg">Xem các khóa học</a>
-                                                        <a class="dropdown-item"
-                                                           href="{{ route('admin.center.edit',$center['center_id']) }}">Sửa</a>
-                                                        <a class="dropdown-item"
-                                                           href="{{ route('admin.user.edit',$center['center_id']) }}">Xóa</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end modal -->
 @stop
 @section('footer')
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>

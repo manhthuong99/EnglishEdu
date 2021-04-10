@@ -41,3 +41,10 @@ div#cke_description {
     overflow: hidden;
     object-fit: cover;
 }
+.modal-dialog.modal-lg {
+    margin-left: auto !important;
+    width: 1500px;
+}
+.show {
+    display: none;
+}

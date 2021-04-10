@@ -223,7 +223,7 @@
                                     <div class="col-auto">
                                         <!-- Avatar -->
                                         <a href="#" class="avatar rounded-circle">
-                                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg">
+                                            <img alt="Image placeholder" src="">
                                         </a>
                                     </div>
                                     <div class="col ml--2">
@@ -499,7 +499,7 @@
                                         </a>
                                         <a href="#" class="avatar avatar-xs rounded-circle" data-toggle="tooltip"
                                            data-original-title="Audrey Love">
-                                            <img alt="Image placeholder" src="../../assets/img/theme/team-2.jpg"
+                                            <img alt="Image placeholder" src=""
                                                  class="rounded-circle">
                                         </a>
                                         <a href="#" class="avatar avatar-xs rounded-circle" data-toggle="tooltip"

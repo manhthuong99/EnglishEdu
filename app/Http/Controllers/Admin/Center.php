@@ -20,7 +20,7 @@ class Center extends Controller
             ->join('user', 'user.user_id', '=', 'english_center.user_id')
             ->where('user.permission', self::CENTER_PERMISSION)
             ->get()->toArray();
-        echo view('admin.center.show', $data);
+        return view('admin.center.show', $data);
     }
 
     public function edit($centerId)
@@ -70,12 +70,9 @@ class Center extends Controller
 
     public function create()
     {
-        $data['users'] = \App\Models\User::where('status', self::ENABLE)
-            ->where('permission', [self::CENTER_PERMISSION, self::USER_PERMISSION])
-            ->get();
-        $data['provinces'] = \App\Models\Province::orderBy('name')
-            ->get();
-        return view('admin.center.create', $data);
+        $data['centers'] = \App\Models\Center::where('status', self::ENABLE)
+            ->get()->toArray();
+        return view('admin.course.create', $data);
     }
 
     public function uploadAvatar($avatar)
@@ -141,9 +138,16 @@ class Center extends Controller
 
     public function getAddress($address, $provinceId, $districtId)
     {
-        $province = \App\Models\Province::find($provinceId)->first();
-        $district = \App\Models\District::find($districtId)->first();
-        return $address . ', ' . $district->prefix . ' ' . $district->name . ', ' . $province->name;
+        if ($districtId) {
+            $district = \App\Models\District::find($districtId)->first();
+            $address .= ', ' . $district->prefix . ', ' . $district->name;
+        }
+        if ($provinceId) {
+            $province = \App\Models\Province::find($provinceId)->first();
+            $address .= ', ' . $province->name;
+        }
+
+        return $address;
 
     }
 }

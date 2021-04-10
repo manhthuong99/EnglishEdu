@@ -19,7 +19,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header d-flex align-items-center">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('admin.dashboards.index') }}">
                 <img src="{{ asset('assets/img/theme/logo.png') }}" class="navbar-brand-img" alt="..."
                      style="width: 200px; height: 100px">
             </a>
@@ -99,7 +99,7 @@
                                     <a href="../../pages/forms/elements.html" class="nav-link"><i class="ni ni-bold-right"></i>Tạo mới</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/forms/components.html" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
+                                    <a href="{{ route('admin.course.index') }}" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
                                 </li>
                             </ul>
                         </div>

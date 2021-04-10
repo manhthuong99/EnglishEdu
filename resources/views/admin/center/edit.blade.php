@@ -147,6 +147,7 @@
                                                     </div>
                                                     <input class="form-control" placeholder="Email" name="email"
                                                            value="{{ $center->email }}" type="email" required>
+                                                    <input name="center_id" type="hidden" value="{{ $center->center_id }}">
                                                 </div>
                                             </div>
                                         </div>

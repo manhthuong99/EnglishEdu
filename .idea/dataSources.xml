@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@localhost" uuid="fa073678-0377-4661-8d16-0d68ea1c94ee">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="english_education@localhost" uuid="fc956c96-308f-4080-b1fa-14ba3368f820">
+      <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://localhost:3306/english_education</jdbc-url>
     </data-source>
   </component>
 </project>

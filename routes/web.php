@@ -20,6 +20,7 @@ Route::post('/admin/home', 'Admin\User@checkLogin')->name('admin.user.checkLogin
 Route::get('/admin/home', 'Admin\User@logout')->name('admin.user.logout');
 Route::group(['prefix' => 'admin', 'middleware' => ['admin.checkLogin']], function () {
     Route::get('/dashboard', 'Admin\Dashboard@index')->name('admin.dashboards.index');
+
     Route::get('/user', 'Admin\User@index')->name('admin.user.index');
     Route::get('/user/edit/{userId}', 'Admin\User@edit')->name('admin.user.edit');
     Route::get('/user/new', 'Admin\User@create')->name('admin.user.create');
@@ -29,6 +30,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.checkLogin']], functi
     Route::get('/center', 'Admin\Center@index')->name('admin.center.index');
     Route::get('/center/edit/{centerId}', 'Admin\Center@edit')->name('admin.center.edit');
     Route::post('/center/save', 'Admin\Center@save')->name('admin.center.save');
+
+    Route::get('/course', 'Admin\Course@index')->name('admin.course.index');
+    Route::get('/course/new', 'Admin\Course@create')->name('admin.course.create');
+    Route::post('/course/save', 'Admin\Course@save')->name('admin.course.save');
+    Route::get('/course/edit/{courseId}', 'Admin\Center@edit')->name('admin.course.edit');
 
     Route::get('/', function () {
         return view('admin.dashboards.dashboard');

@@ -1,8 +1,8 @@
 $(document).ready(function (e) {
     $("#avatar").on('change', (function (e) {
-        var files = e.target.files
-        var f = files[0]
-        var fileReader = new FileReader();
+        let files = e.target.files
+        let f = files[0]
+        let fileReader = new FileReader();
         fileReader.onload = (function (e) {
             console.log(e.target.result)
             $("#avatar-preview").attr("src", e.target.result);
@@ -44,6 +44,30 @@ $(document).ready(function (e) {
                 console.log(error);
             }
         });
+    })
+    $('#show_course').on('click', function(e) {
+        let bookId = e.getAttributes('data')
+       console.log(bookId)
+    });
+    $('#type_customer').on('change', function () {
+        let type_customer = $('#type_customer').val()
+        if (type_customer == 0){
+            $('#other_customer').css('display','block')
+        }
+        else {
+            $('#other_customer').css('display','none')
+        }
+    })
+    $('#type').on('change', function () {
+        let other_type = $('#type').val()
+        if (other_type == 0){
+            $('#other_type').css('display','block')
+            console.log(1)
+        }
+        else {
+            $('#other_type').css('display','none')
+            console.log(2)
+        }
     })
 });
 
