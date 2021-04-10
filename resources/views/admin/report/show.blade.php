@@ -23,13 +23,13 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#">Quản lý Khóa học</a></li>
+                                <li class="breadcrumb-item"><a href="#">Quản lý trung tâm</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('admin.course.create') }}" class="btn btn-lg btn-neutral">Tạo mới</a>
+                        <a href="{{ route('admin.center.create') }}" class="btn btn-lg btn-neutral">Tạo mới</a>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header">
-                        <h3 class="mb-0">DANH SÁCH KHÓA HỌC</h3>
+                        <h3 class="mb-0">DANH SÁCH BÁO CÁO</h3>
                         @if( session()->get('success'))
                             <div class="success">
                                 <span style="color: green">{{ session()->get('success') }}</span>
@@ -55,33 +55,21 @@
                             <thead class="thead-light">
                             <tr>
                                 <th>STT</th>
-                                <th>Khóa Học</th>
-                                <th>Giá</th>
-                                <th>Loại</th>
-                                <th>Loại Học viên</th>
-                                <th>Trạng thái</th>
+                                <th>Trung tâm</th>
+                                <th>Người dùng</th>
+                                <th>Nội dung</th>
+                                <th>Thời gian</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @php( $i = 1)
-                            @foreach( $courses as $course)
-                                <?php
-                                $color = 'green';
-                                $status = 'Đang hoạt động';
-                                if ($course['status'] == 0) {
-                                    $color = 'red';
-                                    $status = 'Ngừng hoạt động';
-                                }
-                                ?>
+                            @foreach( $reports as $key => $report)
                                 <tr>
-                                    <td>{{ $i ++ }}</td>
-                                    <td>{{ $course['name'] }}</td>
-                                    <td>{{ $course['price'] }} VNĐ</td>
-                                    <td>{{ $course['type'] }}</td>
-                                    <td>{{ $course['type_customer'] }}</td>
-                                    <td> <span
-                                            style="margin: auto; color: {{ $color }};margin-right: 20px">{{ $status }}</span></td>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $report['center']['name'] }}</td>
+                                    <td>{{ $report['user']['full_name'] }}</td>
+                                    <td style="white-space: pre-wrap">{{ $report['content'] }}</td>
+                                    <td>{{ date("d/m/Y H:m:s", strtotime($report['created_at'])) }}</td>
                                     <td>
                                         <div class="dropdown">
                                         <span class="btn btn-sm btn-icon-only text-danger" role="button"
@@ -91,9 +79,7 @@
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                                                  style="width: 100px">
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.course.edit',$course['course_id']) }}">Sửa</a>
-                                                <a class="dropdown-item"
-                                                   href="{{ route('admin.user.edit',$course['course_id']) }}">Xóa</a>
+                                                   href="{{ route('admin.report.delete',$report['report_id']) }}">Xóa</a>
                                             </div>
                                         </div>
                                     </td>
@@ -106,6 +92,7 @@
             </div>
         </div>
     </div>
+    <!-- end modal -->
 @stop
 @section('footer')
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>

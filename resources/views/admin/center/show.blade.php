@@ -76,10 +76,16 @@
                                 ?>
                                 <tr>
                                     <td>{{ $i ++ }}</td>
-                                    <td>{{ $center['name'] }}</td>
+                                    <td id="center_id">{{ $center['name'] }}</td>
                                     <td>{{ $center['address'] }}</td>
                                     <td>{{  $center['user']['full_name'] }}</td>
-                                    <td><span class="star">{{  $center['ave_star'] }} sao</span></td>
+                                    <td>
+                                        @for($i = 0; $i < $center['ave_star']; $i ++)
+                                            <div class="icon icon-shape text-yellow rounded-circle ml--3">
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        @endfor
+                                    </td>
                                     <td>
                                         <span
                                             style="margin: auto; color: {{ $color }};margin-right: 20px">{{ $status }}</span>
@@ -92,10 +98,9 @@
                                         </span>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                                                  style="width: 100px">
-                                                <a class="dropdown-item" id="show_course"
-                                                   data-id="{{ $center['center_id'] }}"
-                                                   href="#myModal" data-toggle="modal"
-                                                   data-target=".bd-example-modal-lg">Xem các khóa học</a>
+                                                <a class="dropdown-item"
+                                                   href="{{ route('admin.center.course',$center['center_id']) }}">Xem
+                                                    các khóa học</a>
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.center.edit',$center['center_id']) }}">Sửa</a>
                                                 <a class="dropdown-item"

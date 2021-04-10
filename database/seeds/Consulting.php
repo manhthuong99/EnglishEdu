@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UserSeeder extends Seeder
+class Consulting extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,15 +13,14 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = \Faker\Factory::create();
-        for ($i = 2; $i < 500; $i++) {
-            DB::table('user')->insert([
-                'password' => bcrypt('test'),
+        for ($i = 1; $i < 50; $i++) {
+            DB::table('consulting')->insert([
+                'center_id' => rand(1,50),
+                'user_id' => rand(1,200),
                 'email' => $faker->email,
                 'full_name' => $faker->name,
                 'phone_number' => $faker->phoneNumber,
-                'avatar' => 'avatar-clone.jpg',
-                'status' => 1,
-                'permission' => 1,
+                'note' => $faker->text,
                 'created_at' =>'2021/'.rand(1,12).'/'.rand(1,28),
             ]);
         }

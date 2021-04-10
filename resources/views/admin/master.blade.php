@@ -105,6 +105,20 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#navbar-maps" data-toggle="collapse" role="button"
+                           aria-expanded="false" aria-controls="navbar-maps">
+                            <i class="ni ni-favourite-28 text-red"></i>
+                            <span class="nav-link-text">Nhận xét và đánh giá</span>
+                        </a>
+                        <div class="collapse" id="navbar-maps">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.review.index') }}" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#navbar-tables" data-toggle="collapse" role="button"
                            aria-expanded="false" aria-controls="navbar-tables">
                             <i class="ni ni-align-left-2 text-default"></i>
@@ -113,7 +127,7 @@
                         <div class="collapse" id="navbar-tables">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/tables/tables.html" class="nav-link">Danh sách</a>
+                                    <a href="{{ route('admin.report.index') }}" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
                                 </li>
                             </ul>
                         </div>
@@ -127,34 +141,23 @@
                 <ul class="navbar-nav mb-md-3">
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html"
-                           target="_blank">
+                           href="#">
                             <i class="ni ni-spaceship"></i>
-                            <span class="nav-link-text">Getting started</span>
+                            <span class="nav-link-text">Hướng dẫn sử dụng</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="https://demos.creative-tim.com/argon-dashboard/docs/foundation/colors.html"
-                           target="_blank">
+                           href="#">
                             <i class="ni ni-palette"></i>
-                            <span class="nav-link-text">Foundation</span>
+                            <span class="nav-link-text">Giao diện</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="https://demos.creative-tim.com/argon-dashboard/docs/components/alerts.html"
-                           target="_blank">
+                           href="">
                             <i class="ni ni-ui-04"></i>
-                            <span class="nav-link-text">Components</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link"
-                           href="https://demos.creative-tim.com/argon-dashboard/docs/plugins/charts.html"
-                           target="_blank">
-                            <i class="ni ni-chart-pie-35"></i>
-                            <span class="nav-link-text">Plugins</span>
+                            <span class="nav-link-text">Cài đặt</span>
                         </a>
                     </li>
                 </ul>
@@ -209,8 +212,8 @@
                         <div class="dropdown-menu dropdown-menu-xl dropdown-menu-right py-0 overflow-hidden">
                             <!-- Dropdown header -->
                             <div class="px-3 py-3">
-                                <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong>
-                                    notifications.</h6>
+                                <h6 class="text-sm text-muted m-0">Bạn có <strong class="text-primary">?</strong>
+                                    thông báo.</h6>
                             </div>
                             <!-- List group -->
                             <div class="list-group list-group-flush">
@@ -225,97 +228,13 @@
                                         <div class="col ml--2">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <h4 class="mb-0 text-sm">John Snow</h4>
+                                                    <h4 class="mb-0 text-sm">Tên ai đó</h4>
                                                 </div>
                                                 <div class="text-right text-muted">
-                                                    <small>2 hrs ago</small>
+                                                    <small>1 giờ trước</small>
                                                 </div>
                                             </div>
-                                            <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <!-- Avatar -->
-                                            <img alt="Image placeholder"
-                                                 src=".{{ asset('assets/img/theme/team-2.jpg') }}"
-                                                 class="avatar rounded-circle">
-                                        </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h4 class="mb-0 text-sm">John Snow</h4>
-                                                </div>
-                                                <div class="text-right text-muted">
-                                                    <small>3 hrs ago</small>
-                                                </div>
-                                            </div>
-                                            <p class="text-sm mb-0">A new issue has been reported for Argon.</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <!-- Avatar -->
-                                            <img alt="Image placeholder"
-                                                 src="{{ asset('assets/img/theme/team-3.jpg') }}"
-                                                 class="avatar rounded-circle">
-                                        </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h4 class="mb-0 text-sm">John Snow</h4>
-                                                </div>
-                                                <div class="text-right text-muted">
-                                                    <small>5 hrs ago</small>
-                                                </div>
-                                            </div>
-                                            <p class="text-sm mb-0">Your posts have been liked a lot.</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <!-- Avatar -->
-                                            <img alt="Image placeholder"
-                                                 src="{{ asset('assets/img/theme/team-4.jpg') }}"
-                                                 class="avatar rounded-circle">
-                                        </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h4 class="mb-0 text-sm">John Snow</h4>
-                                                </div>
-                                                <div class="text-right text-muted">
-                                                    <small>2 hrs ago</small>
-                                                </div>
-                                            </div>
-                                            <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <!-- Avatar -->
-                                            <img alt="Image placeholder"
-                                                 src="{{ asset('assets/img/theme/team-5.jpg') }}"
-                                                 class="avatar rounded-circle">
-                                        </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h4 class="mb-0 text-sm">John Snow</h4>
-                                                </div>
-                                                <div class="text-right text-muted">
-                                                    <small>3 hrs ago</small>
-                                                </div>
-                                            </div>
-                                            <p class="text-sm mb-0">A new issue has been reported for Argon.</p>
+                                            <p class="text-sm mb-0">Thông báo cái gì đó!</p>
                                         </div>
                                     </div>
                                 </a>
@@ -404,10 +323,6 @@
             </div>
         </div>
     </nav>
-    <!-- Header -->
-    <!-- Header -->
-
-    <!-- Page content -->
     @yield('main')
 </div>
 </body>

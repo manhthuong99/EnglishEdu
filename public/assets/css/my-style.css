@@ -45,6 +45,7 @@ div#cke_description {
     margin-left: auto !important;
     width: 1500px;
 }
-.show {
+
+.select_other {
     display: none;
 }

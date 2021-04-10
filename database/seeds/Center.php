@@ -15,7 +15,7 @@ class Center extends Seeder
     {
         $listCenter = $this->listCenter();
         $faker = \Faker\Factory::create();
-        for ($i = 50; $i < 100; $i++) {
+        for ($i = 50; $i < 250; $i++) {
             DB::table('english_center')->insert([
                 'user_id' => $i,
                 'name' => $listCenter[array_rand($listCenter)],

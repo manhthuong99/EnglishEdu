@@ -111,7 +111,7 @@ Khóa học Tiếng Anh giao tiếp ở giai đoạn cơ bản giúp học viên
             'phone_number' => '0853897558',
             'avatar' => 'thuongdz.jpg',
             'permission' => 0,
-            'created_at' => '2021/04/01',
+            'created_at' => rand(2020,2021).'/'.rand(1,12).'/'.rand(1,28),
         ]);
         for ($i = 2; $i < 50; $i++) {
             DB::table('user')->insert([
@@ -123,7 +123,7 @@ Khóa học Tiếng Anh giao tiếp ở giai đoạn cơ bản giúp học viên
                 'avatar' => 'avatar-clone.jpg',
                 'status' => 1,
                 'permission' => 1,
-                'created_at' => '2021/04/01',
+                'created_at' => rand(2020,2021).'/'.rand(1,12).'/'.rand(1,28),
             ]);
         }
         for ($i = 50; $i < 100; $i++) {
@@ -136,7 +136,7 @@ Khóa học Tiếng Anh giao tiếp ở giai đoạn cơ bản giúp học viên
                 'avatar' => 'avatar-clone.jpg',
                 'status' => 1,
                 'permission' => 2,
-                'created_at' => '2021/04/01',
+                'created_at' => rand(2020,2021).'/'.rand(1,12).'/'.rand(1,28),
             ]);
         }
         $listCenter = $this->listCenter();
@@ -155,7 +155,7 @@ Khóa học Tiếng Anh giao tiếp ở giai đoạn cơ bản giúp học viên
                 'province_id' => rand(1, 63),
                 'district_id' => rand(1, 709),
                 'status' => 1,
-                'created_at' => '2021/04/01',
+                'created_at' => rand(2020,2021).'/'.rand(1,12).'/'.rand(1,28),
             ]);
         }
         $provinces = $this->getProvince();
@@ -195,7 +195,7 @@ Khóa học Tiếng Anh giao tiếp ở giai đoạn cơ bản giúp học viên
                 'input_point' => rand(0,450),
                 'out_point' => rand(450,800),
                 'status' => 1,
-                'created_at' => '2021/04/01',
+                'created_at' => rand(2020,2021).'/'.rand(1,12).'/'.rand(1,28),
             ]);
         }
     }

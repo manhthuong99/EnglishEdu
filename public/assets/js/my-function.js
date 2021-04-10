@@ -29,7 +29,6 @@ $(document).ready(function (e) {
     });
     $('#province').on('change', function () {
         let provinceId = $('#province').val()
-        console.log(provinceId)
         $.ajax({
             type: 'POST',
             url: '/admin/center/district',
@@ -45,10 +44,6 @@ $(document).ready(function (e) {
             }
         });
     })
-    $('#show_course').on('click', function(e) {
-        let bookId = e.getAttributes('data')
-       console.log(bookId)
-    });
     $('#type_customer').on('change', function () {
         let type_customer = $('#type_customer').val()
         if (type_customer == 0){

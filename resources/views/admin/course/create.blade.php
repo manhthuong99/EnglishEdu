@@ -139,14 +139,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 show" id="other_type">
+                                    <div class="col-md-12 select_other" id="other_type">
                                         <div class="form-group">
                                             <label class="form-control-label">Loại khóa học khác</label>
                                             <div class="input-group input-group-merge">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fas fa-sort-numeric-up-alt"></i></span>
+                                                    <span class="input-group-text"><i
+                                                            class="fas fa-sort-numeric-up-alt"></i></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Loại khóa học khác" name="other_type"
+                                                <input class="form-control" placeholder="Loại khóa học khác"
+                                                       name="other_type"
                                                        value="{{ old('other_type') }}" type="text">
                                             </div>
                                         </div>
@@ -209,7 +211,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 show" id="other_customer">
+                                    <div class="col-md-12 select_other" id="other_customer">
                                         <div class="form-group">
                                             <label class="form-control-label">Loại khách hàng khác</label>
                                             <div class="input-group input-group-merge">
@@ -217,7 +219,8 @@
                                                     <span class="input-group-text"><i
                                                             class="ni ni-ui-04"></i></span>
                                                 </div>
-                                                <input class="form-control" placeholder="Loại khách hàng khác" name="other_customer" type="text">
+                                                <input class="form-control" placeholder="Loại khách hàng khác"
+                                                       name="other_customer" type="text">
                                             </div>
                                         </div>
                                     </div>
@@ -242,7 +245,8 @@
                                                     <span class="input-group-text"><i class="ni ni-notification-70"></i></span>
                                                 </div>
                                                 <input class="form-control" placeholder="Cam kết đầu ra"
-                                                       value="{{ old('input_point') }}" name="input_point" type="text">
+                                                       value="{{ old('out_requirement') }}" name="out_requirement"
+                                                       type="text">
                                             </div>
                                         </div>
                                     </div>

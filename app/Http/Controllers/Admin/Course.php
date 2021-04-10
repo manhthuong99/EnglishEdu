@@ -10,12 +10,15 @@ use Illuminate\Http\Request;
 class Course extends Controller
 {
     const ENABLE = 1;
-    const CENTER_PERMISSION = 2;
-    const USER_PERMISSION = 1;
 
-    public function index()
+    public function index($centerId = null)
     {
-        $data['courses'] = \App\Models\Course::get()->toArray();
+        if ($centerId) {
+            $data['courses'] = \App\Models\Course::where('center_id', $centerId)->get()->toArray();
+        }
+        else{
+            $data['courses'] = \App\Models\Course::get()->toArray();
+        }
         return view('admin.course.show', $data);
     }
 
@@ -24,8 +27,8 @@ class Course extends Controller
         $data['centers'] = \App\Models\Center::orderBy('name')
             ->where('status', self::ENABLE)
             ->get()->toArray();
-        $data['course'] = \App\Models\Course::where('course',$courseId)
-        ->get()->toArray();
+        $data['courses'] = \App\Models\Course::where('course_id', $courseId)
+            ->get()->toArray();
         return view('admin.course.edit', $data);
     }
 
@@ -79,50 +82,17 @@ class Course extends Controller
     {
         if ($preUrl == '/admin') {
             if ($id) {
-                $url = '/admin/center/edit/' . $id;
+                $url = '/admin/course/';
             } else {
-                if (!$id) {
-                    $url = '/admin/center/new';
-                } else {
-                    $url = '/admin/center';
-                }
+                $url = '/admin/course/new';
             }
         } else {
             if ($id) {
-                $url = '/center/edit/' . $id;
+                $url = '/admin/course/';
             } else {
-                if (!$id) {
-                    $url = '/center/new';
-                } else {
-                    $url = '/center';
-                }
+                $url = '/admin/course/new';
             }
         }
         return $url;
-    }
-
-    public function getDistricts(Request $request)
-    {
-        $listDistricts = \App\Models\District::where('province_id', $request->id)->orderBy('name')->get();
-        $option = '';
-        foreach ($listDistricts as $district) {
-            $option .= '<option  value="' . $district->id . '">' . $district->name . '</option>';
-        }
-        return $option;
-    }
-
-    public function getAddress($address, $provinceId, $districtId)
-    {
-        if ($districtId) {
-            $district = \App\Models\District::find($districtId)->first();
-            $address .= ', ' . $district->prefix . ', ' . $district->name;
-        }
-        if ($provinceId) {
-            $province = \App\Models\Province::find($provinceId)->first();
-            $address .= ', ' . $province->name;
-        }
-
-        return $address;
-
     }
 }
