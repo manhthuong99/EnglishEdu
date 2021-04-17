@@ -1,0 +1,13 @@
+.header-menu{
+    height: 80px;
+    padding-top: 10px;
+    border-bottom: solid 3px #75aa43;
+}
+.hide-xl-less.fluid.header-search {
+    max-width: 600px;
+    margin-left: auto;
+}
+.banners-center {
+    max-width: 1200px;
+    margin: auto auto 50px;
+}

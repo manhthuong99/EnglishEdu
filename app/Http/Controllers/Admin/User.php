@@ -43,13 +43,13 @@ class User extends Controller
 
     public function loginSuccess()
     {
-        return redirect('/admin/dashboard');
+        return redirect(route('admin.dashboards.index'));
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/admin/login');
+        return redirect(route('admin.login'));
     }
 
     public function index()
@@ -79,7 +79,7 @@ class User extends Controller
             $url = $this->getUrlRedirect($request->route()->getPrefix(), $checkEmail);
         }
         if ($request->password) {
-            $data->password = $request->password;
+            $data->password = bcrypt($request->password);
             if ($request->password != $request->re_password){
                 return redirect($url)->with('failed', 'Hai mật khẩu ko khớp nhau!');
             }

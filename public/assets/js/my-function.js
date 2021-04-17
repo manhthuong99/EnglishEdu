@@ -1,4 +1,5 @@
 $(document).ready(function (e) {
+    console.log('oke')
     $("#avatar").on('change', (function (e) {
         let files = e.target.files
         let f = files[0]
@@ -55,14 +56,12 @@ $(document).ready(function (e) {
     })
     $('#type').on('change', function () {
         let other_type = $('#type').val()
-        if (other_type == 0){
-            $('#other_type').css('display','block')
-            console.log(1)
-        }
-        else {
-            $('#other_type').css('display','none')
-            console.log(2)
+        if (other_type == 0) {
+            $('#other_type').css('display', 'block')
+        } else {
+            $('#other_type').css('display', 'none')
         }
     })
 });
+
 

@@ -13,4 +13,7 @@ class Center extends Model
     {
         return $this->belongsTo('App\Models\User','user_id');
     }
+    public function province(){
+        return $this->belongsTo('App\Models\Province','user_id');
+    }
 }

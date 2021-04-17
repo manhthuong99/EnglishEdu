@@ -12,23 +12,29 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin/login', function () {
+Route::get('/','Home@index');
+
+Route::get('/admin/dang-nhap', function () {
     return view('admin.user.login');
-});
+})->name('admin.login');
+
+Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('redirect.login');
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
 Route::post('/admin/center/district', 'Admin\Center@getDistricts')->name('admin.district');
 Route::post('/admin/home', 'Admin\User@checkLogin')->name('admin.user.checkLogin');
 Route::get('/admin/home', 'Admin\User@logout')->name('admin.user.logout');
 Route::group(['prefix' => 'admin', 'middleware' => ['admin.checkLogin']], function () {
-    Route::get('/dashboard', 'Admin\Dashboard@index')->name('admin.dashboards.index');
-    Route::get('/dashboard/data', 'Admin\Dashboard@getNumberCustomerData')->name('admin.dashboards.data');
+    Route::get('/trang-chu', 'Admin\Dashboard@index')->name('admin.dashboards.index');
+    Route::get('/dashboards/data', 'Admin\Dashboard@getNumberCustomerData')->name('admin.dashboards.data');
 
-    Route::get('/user', 'Admin\User@index')->name('admin.user.index');
-    Route::get('/user/edit/{userId}', 'Admin\User@edit')->name('admin.user.edit');
-    Route::get('/user/new', 'Admin\User@create')->name('admin.user.create');
-    Route::post('/user/save', 'Admin\User@save')->name('admin.user.save');
+    Route::get('/danh-sach-nguoi-dung', 'Admin\User@index')->name('admin.user.index');
+    Route::get('/thong-tin-nguoi-dung/{userId}', 'Admin\User@edit')->name('admin.user.edit');
+    Route::get('/tao-moi-nguoi-dung', 'Admin\User@create')->name('admin.user.create');
+    Route::post('/luu', 'Admin\User@save')->name('admin.user.save');
 
-    Route::get('/center/new', 'Admin\Center@create')->name('admin.center.create');
-    Route::get('/center', 'Admin\Center@index')->name('admin.center.index');
+    Route::get('/tao-moi-trung-tam', 'Admin\Center@create')->name('admin.center.create');
+    Route::get('/danh-sach-trung-tap', 'Admin\Center@index')->name('admin.center.index');
     Route::get('/center/edit/{centerId}', 'Admin\Center@edit')->name('admin.center.edit');
     Route::post('/center/save', 'Admin\Center@save')->name('admin.center.save');
     Route::get('/center/course/{centerId}', 'Admin\Course@index')->name('admin.center.course');
@@ -47,4 +53,25 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.checkLogin']], functi
     Route::get('/', function () {
         return view('admin.dashboards.dashboard');
     });
+});
+
+Route::group(['prefix' => '/'],function () {
+    Route::get('/trang-chu','Home@index')->name('home.index');
+    Route::get('/trung-tam/{centerId}','Center@index')->name('center.index');
+
+    Route::get('/dang-nhap','User@login')->name('user.login');
+    Route::post('/kiem-tra-dang-nhap','User@checkLogin')->name('user.check.login');
+    Route::get('/dang-xuat','User@logout')->name('user.logout');
+    Route::get('/dang-ky','User@register')->name('user.register');
+    Route::post('/xac-nhan-dang-ky','User@save')->name('user.save');
+    Route::post('/doi-mat-khau','User@changePassword')->name('user.changePassword');
+    Route::get('/thay-doi-mat-khau',function (){
+        return view('frontend.user.change_password');
+    })->name('user.change_password');
+    Route::get('/quen-mat-khau',function (){
+        return view('frontend.user.forgot_password');
+    })->name('user.forgot_password');
+
+
+    Route::get('/center/view/{centerId}','Center@index')->name('center.index');
 });

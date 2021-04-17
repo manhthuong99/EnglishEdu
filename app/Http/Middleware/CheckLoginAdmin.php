@@ -25,10 +25,10 @@ class CheckLoginAdmin
             if ($user->permission == self::ADMIN_PERMISSION) {
                 return $next($request);
             } else {
-                return redirect('/admin/login');
+                return redirect(route('admin.login'));
             }
         } else {
-            return redirect('/admin/login');
+            return redirect(route('admin.login'));
         }
 
     }
