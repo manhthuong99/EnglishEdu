@@ -100,8 +100,8 @@
                                 </div>
                             @endif
                             <div style="margin-top: 1rem">Bằng cách click xác nhận đăng ký, tôi đồng ý với các <a
-                                    href="https://edu2review.com/legal/terms" target="_blank">quy định</a> và
-                                <a href="https://edu2review.com/legal/privacy" target="_blank">điều khoản</a> của
+                                    href="#" target="_blank">quy định</a> và
+                                <a href="#" target="_blank">điều khoản</a> của
                                 EnglishReview.
                             </div>
                             <button id="authFormSubmitBtn"

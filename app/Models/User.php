@@ -10,6 +10,6 @@ class User extends Model
     protected $primaryKey = 'user_id';
     public $timestamps = true;
     protected $fillable = [
-        'email', 'password', 'provider', 'provider_id'
+        'password', 'provider', 'provider_id','token','email'
     ];
 }

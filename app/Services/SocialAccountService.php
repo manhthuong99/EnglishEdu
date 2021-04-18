@@ -22,8 +22,8 @@ class SocialAccountService
                 'provider_user_id' => $providerUser->getId(),
                 'provider' => $social
             ]);
-            $user = User::whereEmail($email)->first();
-
+            $user = User::where('email',$email)
+                ->where('type_login',$social)->first();
             if (!$user) {
                 $user = new \App\Models\User();
                 $user->email = $email;

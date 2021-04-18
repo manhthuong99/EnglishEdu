@@ -26,7 +26,8 @@
                         <p>
                             Vui lòng nhập email đã đăng ký để nhận hướng dẫn đặt lại mật khẩu.
                         </p>
-                        <form method="POST" action="https://edu2review.com/u/forgot_password.html" accept-charset="UTF-8" class="form forgot-password-submit-form" novalidate="true"><input name="_token" type="hidden" value="hQaZBLw0R89HrCuaoOA21ZoUf0dPU7UmjWXJAaC1">
+                        <form method="POST" action="{{ route('user.sendmail') }}">
+                            @csrf
                             <div class="mdc-text-field mdc-text-field--outlined textfield-custom fluid">
                             <span class="mdc-notched-outline mdc-notched-outline--upgraded">
                             <span class="mdc-notched-outline__leading"></span>
@@ -37,13 +38,19 @@
                             <span class="mdc-notched-outline__trailing"></span>
                             </span>
                                 <input name="email" type="email" autocomplete="email" class="mdc-text-field__input" aria-labelledby="email" required="">
-                                <div class="error-message"></div>
+                                @if(session()->get('failed'))
+                                    <div class="error-message">{{ session()->get('failed') }}</div>
+                                @endif
                             </div>
                             <button class="submit_btn submit_btn__primary mdc-button mdc-button--unelevated fluid mdc-ripple-upgraded" type="submit">
                                 <span class="mdc-button__ripple"></span>
-                                <span class="mdc-button__label">Nhận hướng dẫn</span>
+                                <span class="mdc-button__label">Gửi yêu cầu</span>
                             </button>
                         </form>
+                        @if(session()->get('success'))
+                            <div class="toast success">Các thông tin liên quan đến đặt lại mật khẩu đã được gửi đến email của bạn.<br>
+                                Nếu bạn không tìm thấy trong hộp thư đến, vui lòng kiểm tra trong hộp thư rác.</div>
+                        @endif
                         <div class="horizontal-center">
                             <a sytle="font-weight:500;" href="{{ route('user.login') }}" class="attention_btn attention_btn__white attention_btn__medium attention__subtle mdc-button fluid mdc-ripple-upgraded">
                                 <span class="mdc-button__ripple"></span>

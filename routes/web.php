@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,11 +67,20 @@ Route::group(['prefix' => '/'],function () {
     Route::post('/xac-nhan-dang-ky','User@save')->name('user.save');
     Route::post('/doi-mat-khau','User@changePassword')->name('user.changePassword');
     Route::get('/thay-doi-mat-khau',function (){
+        if (!Auth::check()){
+            return redirect('/');
+        }
         return view('frontend.user.change_password');
     })->name('user.change_password');
     Route::get('/quen-mat-khau',function (){
         return view('frontend.user.forgot_password');
     })->name('user.forgot_password');
+    Route::post('/gui-email', 'User@sendMail')->middleware('guest')->name('user.sendmail');
+    Route::get('/dat-lai-mat-khau/{token}', function ($token){
+        $data['token'] = $token;
+        return view('frontend.user.reset_password',$data);
+    })->name('password.reset');
+    Route::post('/xac-nhan-mat-khau','User@resetPassword')->name('user.resetPassword');
 
 
     Route::get('/center/view/{centerId}','Center@index')->name('center.index');
