@@ -1,11 +1,9 @@
 $(document).ready(function (e) {
-    console.log('oke')
     $("#avatar").on('change', (function (e) {
         let files = e.target.files
         let f = files[0]
         let fileReader = new FileReader();
         fileReader.onload = (function (e) {
-            console.log(e.target.result)
             $("#avatar-preview").attr("src", e.target.result);
         });
         fileReader.readAsDataURL(f);

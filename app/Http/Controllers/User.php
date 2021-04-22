@@ -17,6 +17,13 @@ class User extends Controller
     const STATUS_ENABLE = 1;
     const USER_PERMISSION = 1;
 
+    public function index($userId)
+    {
+        if (Auth::check()) {
+            return view('frontend.user.my_account');
+        } else return redirect()->back();
+    }
+
     public function login()
     {
         return view('frontend.user.login');
@@ -136,6 +143,21 @@ class User extends Controller
                 }
             }
         }
+    }
+    public function update(Request $request){
+        $data = \App\Models\User::find($request->user_id);
+        if ($request->avatar) {
+            $data->avatar = $this->uploadAvatar($request->avatar);
+        }
+        $data->phone_number = $request->phone_number;
+        $data->save();
+        return redirect()->back()->with('success', 'Cập nhật thành công!');
+    }
+    public function uploadAvatar($avatar)
+    {
+        $fileName = rand() . '-' . $avatar->getClientOriginalName();
+        $avatar->storeAs('/avatars', $fileName, 'public');
+        return $fileName;
     }
 
 

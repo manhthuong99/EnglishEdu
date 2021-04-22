@@ -11,3 +11,6 @@
     max-width: 1200px;
     margin: auto auto 50px;
 }
+.pagination{
+    justify-content: flex-end;
+}

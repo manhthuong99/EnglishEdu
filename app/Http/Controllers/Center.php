@@ -10,7 +10,7 @@ class Center extends Controller
 {
     const ENABLE = 1;
 
-    public function index($centerId)
+    public function show($centerId)
     {
         return view('frontend.center.view');
     }

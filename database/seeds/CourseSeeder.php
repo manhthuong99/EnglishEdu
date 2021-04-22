@@ -14,14 +14,15 @@ class CourseSeeder extends Seeder
         $listCourse = $this->listCourse();
         $listType = $this->listType();
         $listCustomer = $this->listCustomer();
+        $listPrice = $this->listPrice();
+        $discount = $this->listDiscount();
         $faker = \Faker\Factory::create();
-        for ($i = 1; $i < 200; $i++) {
+        for ($i = 1; $i < 20; $i++) {
             DB::table('course')->insert([
-                'course_id' => $i,
                 'name' => $listCourse[array_rand($listCourse)],
                 'center_id' => rand(1, 50),
-                'price' => rand(1000000, 5000000),
-                'discount' => rand(300000, 1000000),
+                'price' => $listPrice[array_rand($listPrice)],
+                'discount' => $discount[array_rand($discount)],
                 'type' => $listType[array_rand($listType)],
                 'number_of_session' => rand(10, 20),
                 'try_study' => rand(0, 1),
@@ -37,7 +38,16 @@ class CourseSeeder extends Seeder
             ]);
         }
     }
-
+    public function listPrice(){
+        return [
+            '5000000','6000000','8000000','10000000','12000000','9000000'
+        ];
+    }
+    public function listDiscount(){
+        return [
+            '4000000','2000000','100000','3000000'
+        ];
+    }
     public function listCourse()
     {
         return [

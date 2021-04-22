@@ -17,56 +17,58 @@
             <nav class="desktop-navmenu hide-xl-less">
                 <ul class="desktop-navmenu__list">
                     <li class="desktop-navmenu__list-item menu-button" role="menuItem">
-                        <a class="desktop-navmenu__list-item-link tracking" href="https://edu2review.com/#">
+                        <a class="desktop-navmenu__list-item-link tracking" href="#">
                             Ngoại Ngữ
                             <span class="icon icon-sm i-chevron-down"></span>
                         </a>
                         <div class="menu mdc-card" tabindex="-1">
                             <ul class="mdc-list" role="menu" aria-hidden="true">
                                 <li class="mdc-list-item" role="subMenuItem" tabindex="0">
-                                    <a class="list-item-link tracking" href="">Tiếng
-                                        Anh giao tiếp</a>
+                                    <a class="list-item-link tracking" href="{{ route('course.filter',['giao-tiep-co-ban',1]) }}">Giao tiếp cơ bản</a>
                                 </li>
                                 <li class="mdc-list-item" role="subMenuItem" tabindex="0">
-                                    <a class="list-item-link tracking" href="">Tiếng
-                                        Anh Trẻ Em</a>
+                                    <a class="list-item-link tracking" href="{{ route('course.filter',['giao-tiep-trung-cap',1]) }}">Giao tiếp trung cấp</a>
+                                </li>
+                                <li class="mdc-list-item" role="subMenuItem" tabindex="0">
+                                    <a class="list-item-link tracking" href="{{ route('course.filter',['giao-tiep-nang-cao',1]) }}">Giao tiếp nâng cao</a>
+                                </li>
+                                <li class="mdc-list-item" role="subMenuItem" tabindex="0">
+                                    <a class="list-item-link tracking" href="{{ route('course.filter',['business-english',1]) }}">Business English</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="desktop-navmenu__list-item menu-button" role="menuItem">
-                        <a class="desktop-navmenu__list-item-link tracking" href="https://edu2review.com/#">
-                            Kỹ Năng
+                        <a class="desktop-navmenu__list-item-link tracking" href="#">
+                            Đối tượng
                             <span class="icon icon-sm i-chevron-down"></span>
                         </a>
                         <div class="menu mdc-card" tabindex="-1">
                             <ul class="mdc-list" role="menu" aria-hidden="true">
                                 <li class="mdc-list-item" role="subMenuItem" tabindex="0">
-                                    <a class="list-item-link tracking" href="">Tất cả khóa
-                                        kỹ năng</a>
+                                    <a class="list-item-link tracking" href="{{ route('course.filter',['tre-em',1]) }}">Trẻ em</a>
                                 </li>
                                 <li class="mdc-list-item" role="subMenuItem" tabindex="0">
-                                    <a class="list-item-link tracking" href="">Tất cả
-                                        khóa nghiệp vụ</a>
+                                    <a class="list-item-link tracking" href="{{ route('course.filter',['hoc-sinh',1]) }}">Học sinh</a>
+                                </li>
+                                <li class="mdc-list-item" role="subMenuItem" tabindex="0">
+                                    <a class="list-item-link tracking" href="{{ route('course.filter',['moi-lua-tuoi',1]) }}">Mọi lứa tuổi</a>
+                                </li>
+                                <li class="mdc-list-item" role="subMenuItem" tabindex="0">
+                                    <a class="list-item-link tracking" href="{{ route('course.filter',['nguoi-di-lam',1]) }}">Người đi làm</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="desktop-navmenu__list-item menu-button" role="menuItem">
-                        <a class="desktop-navmenu__list-item-link tracking" href="https://edu2review.com/#">
-                            Học Online
-                            <span class="icon icon-sm i-chevron-down"></span>
+                        <a class="desktop-navmenu__list-item-link tracking" href="{{ route('course.filter',['top-uu-dai',1]) }}">
+                            Top Ưu đãi
                         </a>
-                        <div class="menu mdc-card" tabindex="-1">
-                            <ul class="mdc-list" role="menu" aria-hidden="true">
-                                <li class="mdc-list-item" role="subMenuItem" tabindex="0">
-                                    <a class="list-item-link tracking" href="">Học kèm tiếng Anh</a>
-                                </li>
-                                <li class="mdc-list-item" role="subMenuItem" tabindex="0">
-                                    <a class="list-item-link tracking" href="">Học Tiếng Anh Online</a>
-                                </li>
-                            </ul>
-                        </div>
+                    </li>
+                    <li class="desktop-navmenu__list-item menu-button" role="menuItem">
+                        <a class="desktop-navmenu__list-item-link tracking" href="#">
+                           Liên hệ
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -113,7 +115,7 @@
                         <div class="divider-inset"></div>
                         <ul class="mdc-list" role="menu" aria-hidden="true">
                             <li class="mdc-list-item" role="subMenuItem" tabindex="0">
-                                <a class="list-item-link" href="https://edu2review.com/u/VN2108983369/cai-dat/thong-tin-tai-khoan">Thông tin tài khoản</a>
+                                <a class="list-item-link" href="{{ route('user.myAccount',$user->user_id) }}">Thông tin tài khoản</a>
                             </li>
                             <li class="mdc-list-item" role="subMenuItem" tabindex="0">
                                 <a class="list-item-link" href="{{ route('user.change_password') }}">Thay đổi mật khẩu</a>
@@ -222,6 +224,32 @@
         </div>
     </div>
 </footer>
+<!-- Messenger Plugin chat Code -->
+<div id="fb-root"></div>
+<!-- Messenger Plugin chat Code -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v10.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Your Plugin chat code -->
+<div class="fb-customerchat"
+     attribution="page_inbox"
+     page_id="108711061352253">
+</div>
 </body>
 <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('frontend/js/custom.js') }}"></script>

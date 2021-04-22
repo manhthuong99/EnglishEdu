@@ -73,6 +73,9 @@ Route::group(['prefix' => '/'],function () {
         return view('frontend.user.change_password');
     })->name('user.change_password');
     Route::get('/quen-mat-khau',function (){
+        if (Auth::check()){
+            return redirect(route('home.index'));
+        }
         return view('frontend.user.forgot_password');
     })->name('user.forgot_password');
     Route::post('/gui-email', 'User@sendMail')->middleware('guest')->name('user.sendmail');
@@ -81,7 +84,12 @@ Route::group(['prefix' => '/'],function () {
         return view('frontend.user.reset_password',$data);
     })->name('password.reset');
     Route::post('/xac-nhan-mat-khau','User@resetPassword')->name('user.resetPassword');
+    Route::get('/thong-tin-tai-khoan/{userId}','User@index')->name('user.myAccount');
+    Route::post('/cap-nhat-thong-tin}','User@update')->name('user.update');
 
 
     Route::get('/center/view/{centerId}','Center@index')->name('center.index');
+
+    Route::get('/khoa-hoc/{courseId}','Course@show')->name('course.detail');
+    Route::get('/{type}/page/{page}','Course@filter')->name('course.filter');
 });

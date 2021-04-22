@@ -38,13 +38,6 @@
                                        href="https://edu2review.com/u/VN2108983369/da-mua"><span
                                             class="icon i-cash-register n70"></span> Đã mua</a>
                                 </li>
-                                <li class="menu-list__item">
-                                    <a class="button subtle-btn"
-                                       href="https://edu2review.com/u/VN2108983369/cai-dat/thong-tin-tai-khoan"><span
-                                            class="icon i-cog b70"><span
-                                                class="dot-notify dot-notify__left"></span></span>
-                                        Thông tin tài khoản</a>
-                                </li>
                             </ul>
                         </div>
                     </aside>

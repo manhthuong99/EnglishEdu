@@ -30,7 +30,8 @@ class Email extends Mailable
         switch ($this->type){
             case 'forgot_password':
             {
-                return $this->view('mail.forgot_password');
+                $data['url'] = $this->data;
+                return $this->view('mail.forgot_password',$data);
             }
         }
 
