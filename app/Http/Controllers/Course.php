@@ -12,7 +12,7 @@ class Course extends Controller
 
     public function show($courseId)
     {
-        return view('frontend.center.view');
+
     }
 
     public function filter($filter, $page)

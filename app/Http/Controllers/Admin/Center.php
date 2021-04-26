@@ -72,7 +72,12 @@ class Center extends Controller
     {
         $data['centers'] = \App\Models\Center::where('status', self::ENABLE)
             ->get()->toArray();
-        return view('admin.course.create', $data);
+        $data['users'] = \App\Models\User::where('status', self::ENABLE)
+            ->where('permission', [self::CENTER_PERMISSION, self::USER_PERMISSION])
+            ->get();
+        $data['provinces'] = \App\Models\Province::orderBy('name')
+            ->get();
+        return view('admin.center.create', $data);
     }
 
     public function uploadAvatar($avatar)

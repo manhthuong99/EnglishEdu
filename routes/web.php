@@ -57,39 +57,47 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.checkLogin']], functi
 });
 
 Route::group(['prefix' => '/'],function () {
-    Route::get('/trang-chu','Home@index')->name('home.index');
-    Route::get('/trung-tam/{centerId}','Center@index')->name('center.index');
+    Route::get('trang-chu','Home@index')->name('home.index');
+    Route::get('trung-tam/{centerId}','Center@index')->name('center.index');
 
-    Route::get('/dang-nhap','User@login')->name('user.login');
-    Route::post('/kiem-tra-dang-nhap','User@checkLogin')->name('user.check.login');
-    Route::get('/dang-xuat','User@logout')->name('user.logout');
-    Route::get('/dang-ky','User@register')->name('user.register');
-    Route::post('/xac-nhan-dang-ky','User@save')->name('user.save');
-    Route::post('/doi-mat-khau','User@changePassword')->name('user.changePassword');
-    Route::get('/thay-doi-mat-khau',function (){
+    Route::get('dang-nhap','User@login')->name('user.login');
+    Route::post('kiem-tra-dang-nhap','User@checkLogin')->name('user.check.login');
+    Route::get('dang-xuat','User@logout')->name('user.logout');
+    Route::get('dang-ky','User@register')->name('user.register');
+    Route::post('xac-nhan-dang-ky','User@save')->name('user.save');
+    Route::post('doi-mat-khau','User@changePassword')->name('user.changePassword');
+    Route::get('thay-doi-mat-khau',function (){
         if (!Auth::check()){
             return redirect('/');
         }
         return view('frontend.user.change_password');
     })->name('user.change_password');
-    Route::get('/quen-mat-khau',function (){
+    Route::get('quen-mat-khau',function (){
         if (Auth::check()){
             return redirect(route('home.index'));
         }
         return view('frontend.user.forgot_password');
     })->name('user.forgot_password');
-    Route::post('/gui-email', 'User@sendMail')->middleware('guest')->name('user.sendmail');
-    Route::get('/dat-lai-mat-khau/{token}', function ($token){
+    Route::post('gui-email', 'User@sendMail')->middleware('guest')->name('user.sendmail');
+    Route::get('dat-lai-mat-khau/{token}', function ($token){
         $data['token'] = $token;
         return view('frontend.user.reset_password',$data);
     })->name('password.reset');
-    Route::post('/xac-nhan-mat-khau','User@resetPassword')->name('user.resetPassword');
-    Route::get('/thong-tin-tai-khoan/{userId}','User@index')->name('user.myAccount');
-    Route::post('/cap-nhat-thong-tin}','User@update')->name('user.update');
+    Route::post('xac-nhan-mat-khau','User@resetPassword')->name('user.resetPassword');
+    Route::get('thong-tin-tai-khoan/{userId}','User@index')->name('user.myAccount');
+    Route::post('cap-nhat-thong-tin}','User@update')->name('user.update');
 
 
-    Route::get('/center/view/{centerId}','Center@index')->name('center.index');
+    Route::get('center/view/{centerId}','Center@index')->name('center.index');
+    Route::get('top-trung-tap/{page?}','Center@topCenter')->name('center.top');
+    Route::get('trung-tam/{centerId}','Center@topCenter')->name('center.top');
+    Route::get('trung-tam/{centerId}','Center@show')->name('center.detail');
+    Route::post('danh-gia','Center@review')->name('center.review');
+    Route::post('xem-them','Center@showMore')->name('center.showMore');
 
-    Route::get('/khoa-hoc/{courseId}','Course@show')->name('course.detail');
+
     Route::get('/{type}/page/{page}','Course@filter')->name('course.filter');
+    Route::get('/khoa-hoc/{courseId}','Course@filter')->name('course.detail');
+
+    Route::post('nhan-tu-van','Consulting@create')->name('consulting.create');
 });

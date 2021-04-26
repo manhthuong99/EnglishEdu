@@ -29,6 +29,7 @@ $(document).ready(function (e) {
     $('#province').on('change', function () {
         let provinceId = $('#province').val()
         $.ajax({
+
             type: 'POST',
             url: '/admin/center/district',
             // dataType: "json",

@@ -1,195 +1,139 @@
 @extends('frontend.master')
 @section('header')
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <link rel="stylesheet" href="{{ asset('frontend/css/center_view.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/my-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }} ">
+    @if(session()->get('failed'))
+        <script>alert('{{ session()->get('failed') }}')</script>
+    @endif
 @stop
 @section('main')
-    <main id="e2r-page" style="padding-top: 3.4rem;">
-        <div class="mdc-layout-grid content-block layout-shim">
-            <div class="mdc-layout-grid__inner">
-                <section class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-                    <header class="content-header">
-                        <h1 class="content-header__title">Trung tâm Anh ngữ Aten</h1>
-                    </header>
-                </section>
-            </div>
-        </div>
-        <section class="flexbox" id="media-section">
-            <div class="flexbox__columns hide-tablet-less" id="cover">
-                <div class="flexbox__column flexbox__column--8 flexbox__column--md-12 banners-center">
-                    <div class="img-16-9-wrap cover-img">
-                        <picture>
-                            <img class="img-fluid initial"
-                                 src="{{ asset('frontend/img/center.jpg') }}"
-                                 alt="Trung tâm Anh ngữ Aten" style="opacity: 0.7;">
-                        </picture>
-                    </div>
+    @foreach( $centers as $center )
+        <main id="e2r-page" style="padding-top: 3.4rem;">
+            <div class="mdc-layout-grid content-block layout-shim">
+                <div class="mdc-layout-grid__inner">
+                    <section class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                        <header class="content-header">
+                            <h1 class="content-header__title">{{ $center['name'] }}</h1>
+                        </header>
+                    </section>
                 </div>
             </div>
-        </section>
+            <section class="flexbox" id="media-section">
+                <div class="flexbox__columns hide-tablet-less" id="cover">
+                    <div class="flexbox__column flexbox__column--8 flexbox__column--md-12 banners-center">
+                        <div class="img-16-9-wrap cover-img">
+                            <picture>
+                                <img class="img-fluid initial"
+                                     src="{{ asset('storage/avatars/'.$center['avatar']) }}"
+                                     alt="">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <div class="mdc-layout-grid content-block content-block__main-content">
-            <div class="mdc-layout-grid__inner">
-                <section class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 content-block-cell">
-                    <main class="mdc-layout-grid__inner content-body">
-                        <article class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8">
-                            <nav class="sticky-nav">
-                                <div class="navbar__back" id="back-nav"><span
-                                        class="icon i-chevron-left icon-sm"></span></div>
-                                <ul class="navbar">
-                                    <li class="navbar__item">
-                                        <a href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten#courses"
-                                           class="">Khóa học</a>
-                                    </li>
-                                    <li class="navbar__item">
-                                        <a href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten#general-review"
-                                           class="">Đánh giá</a>
-                                    </li>
-                                    <li class="navbar__item">
-                                        <a href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten#school-intro"
-                                           class="">Giới thiệu</a>
-                                    </li>
-                                    <li class="navbar__item">
-                                        <a href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten#locations">Địa
-                                            điểm</a>
-                                    </li>
-                                </ul>
-                                <div class="navbar__next" id="next-nav"><span
-                                        class="icon i-chevron-right icon-sm"></span></div>
-                            </nav>
-                            <div class="content-body__article">
-                                <div class="rating-score rating-score--large">
-                                    <div class="rating-score__number">8.3</div>
-                                    <div class="rating-score__text">
-                                        <strong>
-                                            Tốt
-                                        </strong>
+            <div class="mdc-layout-grid content-block content-block__main-content">
+                <div class="mdc-layout-grid__inner">
+                    <section class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12 content-block-cell">
+                        <main class="mdc-layout-grid__inner content-body">
+                            <article class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8">
+                                <div class="content-body__article">
+                                    <h2> Đánh giá</h2>
+                                    <div class="rating-score rating-score--large">
                                         <div class="flex">
-                                            <div class="rating-stars "><span class="icon icon-sm i-star icon-sm"></span><span
-                                                    class="icon icon-sm i-star icon-sm"></span><span
-                                                    class="icon icon-sm i-star icon-sm"></span><span
-                                                    class="icon icon-sm i-star icon-sm"></span><span
-                                                    class="icon icon-sm i-starline icon-sm"></span></div>
-                                            <div class="rating-group__count">109 đánh giá</div>
+                                            @for($i = 0; $i < $center['ave_star']; $i ++)
+                                                <i class="fas fa-star text-yellow text-xl"></i>
+                                            @endfor
                                         </div>
                                     </div>
                                 </div>
                                 <section class="content-body__article--review-block" id="courses">
                                     <div class="content-block-title">
                                         <h3>Khóa học</h3>
-                                        <p><small><b>2 khóa học</b></small></p>
+                                        <p><small><b>{{ $total }} khóa học</b></small></p>
                                     </div>
                                     <div id="courses-8" class="mdc-card border-b10 school-page-course-card fluid"
                                          style="display: block;">
                                     </div>
-                                    <div id="courses-9" class="mdc-card border-b10 school-page-course-card fluid"
-                                         style="display: block;">
-                                        <div class="mdc-card__actions">
-                                            <div class="course-block course-block__no-image fluid">
-                                                <div class="course-block__info short-description">
-                                                    <div class="course-block__info-main">
-                                                        <a target="_blank"
-                                                           href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten/khoa-hoc/khoa-vip-1-kem-1-9">
-                                                            <div class="flex-start"
-                                                                 style="flex-wrap: nowrap;margin: 0.4rem 0">
-                                                                <h3>Khóa VIP 1 kèm 1</h3>
-                                                            </div>
-                                                        </a>
-                                                        <div class="flex">
-                                                            <div>
-                                                                <div class="chip n70">
-                                                                    <span class="icon icon-sm i-graduation-cap"></span>
-                                                                    <small>Giao tiếp Cơ bản</small>
+                                    @foreach( $courses as $course)
+                                        <div id="courses-9" class="mdc-card border-b10 school-page-course-card fluid"
+                                             style="display: block;">
+                                            <div class="mdc-card__actions">
+                                                <div class="course-block course-block__no-image fluid">
+                                                    <div class="course-block__info short-description">
+                                                        <div class="course-block__info-main">
+                                                            <a target="_blank"
+                                                               href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten/khoa-hoc/khoa-vip-1-kem-1-9">
+                                                                <div class="flex-start"
+                                                                     style="flex-wrap: nowrap;margin: 0.4rem 0">
+                                                                    <h3>{{ $course['name'] }}</h3>
                                                                 </div>
-                                                                <div class="chip n70">
-                                                                    <span class="icon icon-sm i-clock"></span>
-                                                                    <small>40 buổi</small>
-                                                                </div>
-                                                                <div class="chip n70">
+                                                            </a>
+                                                            <div class="flex">
+                                                                <div>
+                                                                    <div class="chip n70">
+                                                                        <span
+                                                                            class="icon icon-sm i-graduation-cap"></span>
+                                                                        <small>{{ $course['type'] }}</small>
+                                                                    </div>
+                                                                    <div class="chip n70">
+                                                                        <span class="icon icon-sm i-clock"></span>
+                                                                        <small>{{ $course['number_of_session'] }}
+                                                                            buổi</small>
+                                                                    </div>
+                                                                    <div class="chip n70">
                                                                     <span
                                                                         class="icon icon-sm i-giao-vien-ban-xu"></span>
-                                                                    <small>Giáo viên bản xứ</small>
+                                                                        <small>{{ $course['type_customer'] }}</small>
+                                                                    </div>
+                                                                    @if( $course['try_study'])
+                                                                        <div class="chip n70">
+                                                                            <span
+                                                                                class="icon icon-sm i-co-hoc-thu"></span>
+                                                                            <small>Có học thử</small>
+                                                                        </div>
+                                                                    @endif
                                                                 </div>
-                                                                <div class="chip n70">
-                                                                    <span class="icon icon-sm i-co-hoc-thu"></span>
-                                                                    <small>Có học thử</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="divider-vertical"></div>
-                                                            <div style="padding-left: 0.2rem;align-self: center;">
-                                                                <div>
-                                                                    <b class="b70">Giảm ngay <span
-                                                                            class="r30">500.000 ₫</span>
-                                                                        <br> cho EduMember</b></div>
+                                                                <div class="divider-vertical"></div>
+                                                                @if( $course['discount'])
+                                                                    <div style="padding-left: 0.2rem;">
+                                                                        <div class="n70">
+                                                                            <small>Học phí
+                                                                                <del
+                                                                                    class="b70"> {{ number_format($course['price']) }}
+                                                                                    ₫
+                                                                                </del>
+                                                                            </small></div>
+                                                                        <div><b class="b70">Giá chỉ còn <span
+                                                                                    class="r30"> {{ number_format((int)$course['price'] - (int)$course['discount']) }} ₫</span></b>
+                                                                        </div>
+                                                                    </div>
+                                                                @else
+                                                                    <div style="padding-left: 0.2rem;">
+                                                                        <div>
+                                                                            <b class="b70">Học phí
+                                                                                <span class="r30"> {{ number_format($course['price']) }} ₫</span>
+                                                                            </b>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="flex" style="margin-top: 0.8rem;align-items: center;">
-                                                    <a style="margin-left: auto"
-                                                        href=""
-                                                       class="attention_btn attention_btn__o30 attention_btn__medium mdc-button mdc-button--unelevated mdc-ripple-upgraded">
-                                                        <span class="mdc-button__ripple"></span>
-                                                        <span class="mdc-button__label">Xem chi tiết</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="courses-9" class="mdc-card border-b10 school-page-course-card fluid"
-                                         style="display: block;">
-                                        <div class="mdc-card__actions">
-                                            <div class="course-block course-block__no-image fluid">
-                                                <div class="course-block__info short-description">
-                                                    <div class="course-block__info-main">
-                                                        <a target="_blank"
-                                                           href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten/khoa-hoc/khoa-vip-1-kem-1-9">
-                                                            <div class="flex-start"
-                                                                 style="flex-wrap: nowrap;margin: 0.4rem 0">
-                                                                <h3>Khóa VIP 1 kèm 1</h3>
-                                                            </div>
+                                                    <div class="flex" style="margin-top: 0.8rem;align-items: center;">
+                                                        <a style="margin-left: auto"
+                                                           href=""
+                                                           class="attention_btn attention_btn__o30 attention_btn__medium mdc-button mdc-button--unelevated mdc-ripple-upgraded">
+                                                            <span class="mdc-button__ripple"></span>
+                                                            <span class="mdc-button__label">Xem chi tiết</span>
                                                         </a>
-                                                        <div class="flex">
-                                                            <div>
-                                                                <div class="chip n70">
-                                                                    <span class="icon icon-sm i-graduation-cap"></span>
-                                                                    <small>Giao tiếp Cơ bản</small>
-                                                                </div>
-                                                                <div class="chip n70">
-                                                                    <span class="icon icon-sm i-clock"></span>
-                                                                    <small>40 buổi</small>
-                                                                </div>
-                                                                <div class="chip n70">
-                                                                    <span
-                                                                        class="icon icon-sm i-giao-vien-ban-xu"></span>
-                                                                    <small>Giáo viên bản xứ</small>
-                                                                </div>
-                                                                <div class="chip n70">
-                                                                    <span class="icon icon-sm i-co-hoc-thu"></span>
-                                                                    <small>Có học thử</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="divider-vertical"></div>
-                                                            <div style="padding-left: 0.2rem;align-self: center;">
-                                                                <div>
-                                                                    <b class="b70">Giảm ngay <span
-                                                                            class="r30">500.000 ₫</span>
-                                                                        <br> cho EduMember</b></div>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="flex" style="margin-top: 0.8rem;align-items: center;">
-                                                    <a style="margin-left: auto"
-                                                        href=""
-                                                       class="attention_btn attention_btn__o30 attention_btn__medium mdc-button mdc-button--unelevated mdc-ripple-upgraded">
-                                                        <span class="mdc-button__ripple"></span>
-                                                        <span class="mdc-button__label">Xem chi tiết</span>
-                                                    </a>
-                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                     <div class="flex hide-tablet-less">
                                         <button style="margin-top: 20px; margin-bottom: 20px; display: none;"
                                                 class="more_btn more_btn__white more_btn__medium mdc-button mdc-button--outlined view-more-d mdc-ripple-upgraded">
@@ -220,177 +164,283 @@
                                     </div>
                                     <div id="about-school">
                                         <div style="max-height: 400px; overflow: hidden; will-change: max-height;">
-                                            <div><p><strong>Anh văn Hội Việt Mỹ VUS</strong> là Hệ thống Anh ngữ quy mô
-                                                    lớn với các cơ sở được đầu tư chất lượng và hiện đại rộng khắp trên
-                                                    cả nước. Trong hơn 20 năm hoạt động và phát triển, VUS đón nhận sự
-                                                    tín nhiệm của hơn 250.000 lượt gia đình tin chọn hằng năm. Hiện nay,
-                                                    VUS là hệ thống đang giữ kỷ lục Việt Nam – Hệ thống Anh ngữ có số
-                                                    lượng học viên nhận Chứng chỉ Anh ngữ Quốc tế nhiều nhất với hơn
-                                                    123.000 em.</p>
-                                                <p>Với kinh nghiệm giảng dạy uy tín cùng phương pháp học tương tác cao,
-                                                    đặc biệt ứng dụng công nghệ cao trong dạy và học, VUS là một trong
-                                                    những lựa chọn hợp lý khi bạn đang băn khoăn tìm một nơi trau dồi và
-                                                    phát triển trình độ Anh ngữ của mình.</p>
-                                                <h3>Giới thiệu chung về Anh văn Hội Việt Mỹ VUS</h3>
-                                                <p>VUS (website: vus.edu.vn) được đánh giá là một trong những đơn vị
-                                                    giảng dạy Anh ngữ lớn nhất trong địa bàn thành phố HCM cũng như trên
-                                                    cả nước. Hợp tác chiến lược với The City University of New York
-                                                    (CUNY) – Đại học công lập lớn thứ 3 Hoa Kỳ về chất lượng đào tạo và
-                                                    xây dựng chương trình học. Và hợp tác đào tạo với các đối tác giáo
-                                                    dục quốc tế như Oxford University Press, British Council...</p>
-                                                <p></p>
-                                            </div>
+                                            <p>
+                                                {{ $center['description'] }}
+                                            </p>
                                         </div>
                                     </div>
                                 </section>
                                 <section class="content-body__article--review-block" id="general-review">
                                     <div class="content-block-title">
                                         <h3>Đánh giá</h3>
-                                        <p><small><b>109 đánh giá</b></small></p>
+                                        <p><small><b>{{ $reviews['totalReview'] }} đánh giá</b></small></p>
                                     </div>
-                                    <a rel="nofollow"
-                                       href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten/viet-danh-gia"
-                                       class="attention_btn attention_btn__primary attention_btn__medium mdc-button mdc-button--unelevated float-right mdc-ripple-upgraded">
-                                        <span class="mdc-button__ripple"></span>
-                                        <span class="icon icon-sm i-star on-theme-bg"></span>&nbsp;
-                                        <span class="mdc-button__label">Viết đánh giá</span>
-                                    </a>
+                                    <section class="content-body__article--review-block">
+                                        @if(\Illuminate\Support\Facades\Auth::check())
+                                            <input type="hidden" name="center_id" id="center_id"
+                                                   value="{{ $center['center_id'] }}">
+                                            <input type="hidden" name="user_id" id="user_id"
+                                                   value="{{ \Illuminate\Support\Facades\Auth::user()->user_id }}">
+                                        @endif
+                                        <div class="content-block-title">
+                                            <h3>Viết nhận xét</h3>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="stars-input" id="map_ratings[6]">
+                                                <fieldset>
+                                                    <input id="stars-input-6-5" type="radio" name="rate" value="5">
+                                                    <label for="stars-input-6-5" title="Rất hài lòng"></label>
+                                                    <input id="stars-input-6-4" type="radio" name="rate" value="4">
+                                                    <label for="stars-input-6-4" title="Hài lòng "></label>
+                                                    <input id="stars-input-6-3" type="radio" name="rate" value="3">
+                                                    <label for="stars-input-6-3" title="Bình thường"></label>
+                                                    <input id="stars-input-6-2" type="radio" name="rate" value="2">
+                                                    <label for="stars-input-6-2" title="Chưa hài lòng lắm"></label>
+                                                    <input id="stars-input-6-1" type="radio" name="rate" value="1">
+                                                    <label for="stars-input-6-1" title="Không hài lòng "></label>
+                                                </fieldset>
+                                            </div>
+                                            <div class="error-message"></div>
+                                        </div>
+                                        <div class="form-group">
+                                                <textarea id="comment-box" name="comment" class="form-input"
+                                                          placeholder="Hãy viết gì đó..." rows="3"></textarea>
+                                        </div>
+                                        <button id="button-submit" type="submit" class="btn btn-sm btn-danger">
+                                            Gửi dánh giá
+                                        </button>
+                                    </section>
                                     <hr>
                                     <div class="rating-group__grouping-block">
-                                        <h4>Chi tiết từ học viên</h4>
-                                        <div class="comment-group">
-                                            <div class="comment-block" id="user-review-47130">
-                                                <div class="comment-block__header">
-                                                    <div class="avatar-group">
-                                                        <figure class="avatar">
-                                                            <img
-                                                                src="{{ asset('frontend/img/icons/avatar.svg') }}"
-                                                                alt="Mat Duong" data-ll-status="loaded" class="loaded">
-                                                        </figure>
-                                                        <div class="avatar-group__info">
-                                                            <div class="user-name">Mat Duong</div>
-                                                            <div class="user-rate-info">
-                                                                <div class="rating-group">
-                                                                    <div class="rating-stars rating-stars"><span
-                                                                            class="icon icon-sm i-star "></span><span
-                                                                            class="icon icon-sm i-star "></span><span
-                                                                            class="icon icon-sm i-star "></span><span
-                                                                            class="icon icon-sm i-star "></span><span
-                                                                            class="icon icon-sm i-star-haft-alt "></span>
-                                                                    </div>&nbsp;<time>Ngày 21-12-2020</time>
+                                        <h4>Đánh giá từ học viên</h4>
+                                        <div class="comment-group" id="comment-group">
+                                            @foreach( $reviews['review'] as $review)
+                                                <div class="comment-block" id="user-review-47130">
+                                                    <div class="comment-block__header">
+                                                        <div class="avatar-group">
+                                                            <figure class="avatar">
+                                                                <img
+                                                                    src="{{ asset('storage/avatars/'.$review['user']['avatar']) }}"
+                                                                    alt="Mat Duong" data-ll-status="loaded"
+                                                                    class="loaded">
+                                                            </figure>
+                                                            <div class="avatar-group__info">
+                                                                <div
+                                                                    class="user-name">{{ $review['user']['full_name'] }}</div>
+                                                                <div class="user-rate-info">
+                                                                    <div class="rating-group">
+                                                                        <div class="rating-stars rating-stars">
+                                                                            @for( $i = 0; $i < $review['rate']; $i++)
+                                                                                <span
+                                                                                    class="icon icon-sm i-star "></span>
+                                                                            @endfor
+                                                                        </div>&nbsp;
+                                                                        <time> {{ date("d/m/Y H:m:s", strtotime($review['created_at'])) }}</time>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="comment-block__content">
-                                                    <p>Lúc đầu rất ngại, sợ đóng tiền rồi học không được. Nhưng thầy
-                                                        cô rất tận tình hướng dẫn, dễ thương. 1 lớp có 3 thầy cô hỗ
-                                                        trợ. <br>
-                                                        Các chị ở trung tâm cũng thường xuyên hỏi thăm tình hình,
-                                                        vắng là gọi xếp lịch học bù ngay <br>
-                                                        Rất hài lòng về chất lượng học và phục vụ</p>
-                                                    <p>
-                                                </div>
-                                                <label for="review-main-47130" class="readmore-trigger"></label>
-                                                <div class="divider"></div>
-                                            </div>
-                                            <div class="comment-block" id="user-review-47130">
-                                                <div class="comment-block__header">
-                                                    <div class="avatar-group">
-                                                        <figure class="avatar">
-                                                            <img
-                                                                src="{{ asset('frontend/img/icons/avatar.svg') }}"
-                                                                alt="Mat Duong" data-ll-status="loaded" class="loaded">
-                                                        </figure>
-                                                        <div class="avatar-group__info">
-                                                            <div class="user-name">Mat Duong</div>
-                                                            <div class="user-rate-info">
-                                                                <div class="rating-group">
-                                                                    <div class="rating-stars rating-stars"><span
-                                                                            class="icon icon-sm i-star "></span><span
-                                                                            class="icon icon-sm i-star "></span><span
-                                                                            class="icon icon-sm i-star "></span><span
-                                                                            class="icon icon-sm i-star "></span><span
-                                                                            class="icon icon-sm i-star-haft-alt "></span>
-                                                                    </div>&nbsp;<time>Ngày 21-12-2020</time>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <div class="comment-block__content">
+                                                        <p>
+                                                            {{ $review['comment'] }}
+                                                        </p>
                                                     </div>
+                                                    <label for="review-main-47130" class="readmore-trigger"></label>
+                                                    <div class="divider"></div>
                                                 </div>
-                                                <div class="comment-block__content">
-                                                    <p>Lúc đầu rất ngại, sợ đóng tiền rồi học không được. Nhưng thầy
-                                                        cô rất tận tình hướng dẫn, dễ thương. 1 lớp có 3 thầy cô hỗ
-                                                        trợ. <br>
-                                                        Các chị ở trung tâm cũng thường xuyên hỏi thăm tình hình,
-                                                        vắng là gọi xếp lịch học bù ngay <br>
-                                                        Rất hài lòng về chất lượng học và phục vụ</p>
-                                                    <p>
-                                                </div>
-                                                <label for="review-main-47130" class="readmore-trigger"></label>
-                                                <div class="divider"></div>
-                                            </div>
+                                            @endforeach
                                         </div>
-                                        <input type="hidden" id="fid" name="_token"
-                                               value="uFPNaalnXdqpY6YNITY8EqveuWJXSEdTzVuHYSGz">
-                                        <input type="hidden" id="vmru" name="vmru"
-                                               value="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten">
-                                        <input type="hidden" id="vmp" name="vmp" value="2">
-                                        <button data-schoolname="Trung tâm Anh ngữ Aten"
+                                        <button id="showMore"
                                                 class="subtle-btn subtle-btn__outlined view-more">
-                                            Xem tiếp&nbsp;<span>105</span>&nbsp;đánh giá
+                                            Xem thêm đánh giá
                                         </button>
                                     </div>
                                 </section>
-                            </div>
-                        </article>
-                    </main>
-                </section>
-                <section class="content-body__article--review-block" id="locations">
-                    <div class="content-block-title">
-                        <h3>Địa điểm</h3>
-                    </div>
-                </section>
-            </div>
-            <div class="mdc-layout-grid__inner map-block">
-                <div
-                    class="map-block__general-img mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-12-tablet">
-                    <div id="locations-map">
-                        <picture>
-                            <img class="initial img-responsive loaded"
-                                 src="./Trung tâm Anh ngữ Aten _ Edu2Review_files/hochiminh.jpg"
-                                 alt="..." data-ll-status="loaded">
-                        </picture>
-                    </div>
+                            </article>
+                            <aside class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 hide-tablet-less">
+                                <div class="form__sticky-side">
+                                    <div class="mdc-card">
+                                        <div class="mdc-card__actions">
+                                            <div class="form-block fluid">
+                                                <form class="form submit-form" action="{{ route('consulting.create') }}"
+                                                      method="POST">
+                                                    <div class="content-block-title">
+                                                        <h3>Bạn cần tư vấn? <br> Hãy liện hệ với {{ $center['name'] }}
+                                                        </h3>
+                                                    </div>
+                                                    @csrf
+                                                    @if( \Illuminate\Support\Facades\Auth::check())
+                                                        <input type="hidden" name="user_id"
+                                                               value="{{ \Illuminate\Support\Facades\Auth::user()->user_id }}">
+                                                    @endif
+                                                    <input type="hidden" name="center_id"
+                                                           value="{{ $center['center_id'] }}">
+                                                    <div
+                                                        class="mdc-text-field mdc-text-field--outlined textfield-custom fluid">
+                                                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                                                        <span class="mdc-notched-outline__leading"></span>
+                                                        <span class="mdc-notched-outline__notch">
+                                                        <label for="additional"
+                                                               class="mdc-floating-label mdc-floating-label" style="">Họ và tên</label>
+                                                        </span>
+                                                        <span class="mdc-notched-outline__trailing"></span>
+                                                        </span>
+                                                        <input name="full_name" type="text"
+                                                               class="mdc-text-field__input"
+                                                               aria-labelledby="additional" required>
+                                                    </div>
+                                                    <div
+                                                        class="mdc-text-field mdc-text-field--outlined textfield-custom fluid">
+                                                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                                                        <span class="mdc-notched-outline__leading"></span>
+                                                        <span class="mdc-notched-outline__notch">
+                                                        <label for="phone_number"
+                                                               class="mdc-floating-label mdc-floating-label" style="">Số điện thoại</label>
+                                                        </span>
+                                                        <span class="mdc-notched-outline__trailing"></span>
+                                                        </span>
+                                                        <input name="phone_number" type="tel"
+                                                               autocomplete="tel-national" class="mdc-text-field__input"
+                                                               aria-labelledby="phone_number">
+                                                    </div>
+                                                    <div
+                                                        class="mdc-text-field mdc-text-field--outlined textfield-custom fluid">
+                                                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                                                        <span class="mdc-notched-outline__leading"></span>
+                                                        <span class="mdc-notched-outline__notch">
+                                                        <label for="email" class="mdc-floating-label"
+                                                               style="">Email</label>
+                                                        </span>
+                                                        <span class="mdc-notched-outline__trailing"></span>
+                                                        </span>
+                                                        <input name="email" type="email" autocomplete="email"
+                                                               class="mdc-text-field__input" aria-labelledby="email">
+                                                    </div>
+                                                    <div
+                                                        class="mdc-text-field mdc-text-field--outlined textfield-custom fluid">
+                                                        <span class="mdc-notched-outline mdc-notched-outline--upgraded">
+                                                        <span class="mdc-notched-outline__leading"></span>
+                                                        <span class="mdc-notched-outline__notch">
+                                                        <label for="email" class="mdc-floating-label"
+                                                               style="">Ghi chú</label>
+                                                        </span>
+                                                        <span class="mdc-notched-outline__trailing"></span>
+                                                        </span>
+                                                        <input name="note" type="text"
+                                                               class="mdc-text-field__input">
+                                                    </div>
+                                                    @if( session()->get('success'))
+                                                        <div
+                                                            class="toast text-blue">{{ session()->get('success') }}</div>
+                                                    @endif
+                                                    <div>
+                                                        <button
+                                                            class="submit_btn submit_btn__primary mdc-button mdc-button--unelevated fluid mdc-ripple-upgraded"
+                                                            type="submit">
+                                                            <span class="mdc-button__ripple"></span>
+                                                            <span class="mdc-button__label">Nhận tư vấn</span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </main>
+                    </section>
                 </div>
-                <div
-                    class="map-block__locations mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-12-tablet">
-                    <div class="location-list hide-tablet-less">
-                        <ul class="mdc-list mdc-list--non-interactive">
-                            <li class="mdc-list-item location-item">
-                                <span class="icon icon-sm map-marker"></span>
-                                <a href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten#"
-                                   data-address="41 Ngõ Láng Trung, Láng Hạ, Đống Đa, Hà Nội (đi từ Ngõ 107 Nguyễn Chí Thanh) "
-                                   data-location="21.0148394,105.8050957,16">Aten - Cơ sở 1<span>41 Ngõ Láng Trung, Láng Hạ, Đống Đa, Hà Nội (đi từ Ngõ 107 Nguyễn Chí Thanh) </span></a>
-                            </li>
-                            <li class="mdc-list-item location-item">
-                                <span class="icon icon-sm map-marker"></span>
-                                <a href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten#"
-                                   data-address=" 54C Vũ Trọng Phụng, Thanh Xuân Trung, Thanh Xuân, Hà Nội"
-                                   data-location="20.9990496,105.8066705,16">Aten - Cơ sở 2<span> 54C Vũ Trọng Phụng, Thanh Xuân Trung, Thanh Xuân, Hà Nội</span></a>
-                            </li>
-                            <li class="mdc-list-item location-item">
-                                <span class="icon icon-sm map-marker"></span>
-                                <a href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten#"
-                                   data-address="75 Trần Đại Nghĩa kéo dài, Hai Bà Trưng, Hà Nội (gần đường Nguyễn An Ninh) "
-                                   data-location="20.9915682,105.8428241,16">Aten - Cơ sở 6<span>75 Trần Đại Nghĩa kéo dài, Hai Bà Trưng, Hà Nội (gần đường Nguyễn An Ninh) </span></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
-        </div>
-    </main>
+            {{-- Modal --}}
+            <aside class="modal internal-modal modal--small modal__mobile-full modal--brand__vus"
+                   id="modal_login" data-time="20000">
+                <div class="modal__content">
+                    <section class="modal__body">
+                        <button class="subtle-btn close-modal-btn" id="close_modal">
+                            <span class="icon icon-sm i-times"></span>
+                        </button>
+                        <div class="content-block-title">
+                            <h2>Bạn cần đăng nhập để đánh giá!</h2>
+                        </div>
+                        <div>
+                            <br>
+                            <br>
+                            <a href="{{ route('user.login') }}">
+                                <button
+                                    class="submit_btn submit_btn__r30 mdc-button mdc-button--unelevated fluid submit-btn button-attention mdc-ripple-upgraded"
+                                    type="button">
+                                    <span class="mdc-button__ripple"></span>
+                                    <span class="mdc-button__label">Đến trang đăng nhập</span>
+                                </button>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal__backdrop"></div>
+            </aside>
+        </main>
+        <!-- Modal -->
+    @endforeach
+@stop
+@section('footer')
+    <script>
+        $(document).ready(function () {
+
+            let modal = document.getElementById('modal_login');
+            let limit = 2;
+
+            $('#button-submit').on('click', function (event) {
+                let user_id = $('#user_id').val();
+                if (user_id) {
+                    let data = {
+                        center_id: $('#center_id').val(),
+                        user_id: user_id,
+                        rate: $('input[name=rate]:checked').val(),
+                        comment: $('#comment-box').val()
+                    }
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('center.review') }}',
+                        data: data,
+                        success: function (response) {
+                            $('#comment-box').val('')
+                            $('#comment-group').html(response);
+                        },
+                        error: function (xhr, status, error) {
+                            console.log(error);
+                        }
+                    });
+                } else {
+                    setTimeout(function () {
+                        modal.classList.add('active');
+                    }, 500);
+                }
+            });
+
+            $('#close_modal').on('click', function () {
+                modal.classList.remove('active')
+            })
+
+            $('#showMore').on('click', function () {
+                limit = limit + 2
+                let data = {
+                    center_id: '{{ $centers[0]['center_id'] }}',
+                    limit: limit
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('center.showMore') }}',
+                    data: data,
+                    success: function (response) {
+                        $('#comment-group').html(response)
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            })
+        });
+    </script>
 @stop
 

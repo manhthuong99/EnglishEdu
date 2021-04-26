@@ -18,7 +18,7 @@
                 <ul class="desktop-navmenu__list">
                     <li class="desktop-navmenu__list-item menu-button" role="menuItem">
                         <a class="desktop-navmenu__list-item-link tracking" href="#">
-                            Ngoại Ngữ
+                            Khóa học
                             <span class="icon icon-sm i-chevron-down"></span>
                         </a>
                         <div class="menu mdc-card" tabindex="-1">
@@ -59,6 +59,11 @@
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="desktop-navmenu__list-item menu-button" role="menuItem">
+                        <a class="desktop-navmenu__list-item-link tracking" href="{{ route('center.top') }}">
+                            Top trung tâm
+                        </a>
                     </li>
                     <li class="desktop-navmenu__list-item menu-button" role="menuItem">
                         <a class="desktop-navmenu__list-item-link tracking" href="{{ route('course.filter',['top-uu-dai',1]) }}">

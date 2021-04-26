@@ -14,3 +14,6 @@
 .pagination{
     justify-content: flex-end;
 }
+.modal__content{
+    min-height: 200px !important;
+}
