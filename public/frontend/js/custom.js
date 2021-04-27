@@ -28,5 +28,5 @@ $(document).ready(function (e) {
         });
         fileReader.readAsDataURL(f);
     }));
-    $('#updateAccount').on('click')
+
 })

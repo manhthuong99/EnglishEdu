@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/center_view.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/my-style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
     @if(session()->get('failed'))
         <script>alert('{{ session()->get('failed') }}')</script>
     @endif
@@ -64,13 +65,6 @@
                                                 <div class="course-block course-block__no-image fluid">
                                                     <div class="course-block__info short-description">
                                                         <div class="course-block__info-main">
-                                                            <a target="_blank"
-                                                               href="https://edu2review.com/danh-gia/trung-tam-anh-ngu-aten/khoa-hoc/khoa-vip-1-kem-1-9">
-                                                                <div class="flex-start"
-                                                                     style="flex-wrap: nowrap;margin: 0.4rem 0">
-                                                                    <h3>{{ $course['name'] }}</h3>
-                                                                </div>
-                                                            </a>
                                                             <div class="flex">
                                                                 <div>
                                                                     <div class="chip n70">
@@ -124,7 +118,7 @@
                                                     </div>
                                                     <div class="flex" style="margin-top: 0.8rem;align-items: center;">
                                                         <a style="margin-left: auto"
-                                                           href=""
+                                                           href="{{ route('course.detail',$course['course_id']) }}"
                                                            class="attention_btn attention_btn__o30 attention_btn__medium mdc-button mdc-button--unelevated mdc-ripple-upgraded">
                                                             <span class="mdc-button__ripple"></span>
                                                             <span class="mdc-button__label">Xem chi tiết</span>
@@ -152,10 +146,12 @@
                                 <div class="toast b0 text-center"
                                      style="width: fit-content; margin: 2rem auto;max-width: 100%;">
                                     <div class="b70">
-                                        <p>Bạn cần thêm thông tin?</p>
+                                        <p>Phát hiện lừa đảo?</p>
                                         <h3 class="r30">Gọi Hotline <a href="tel:0853897558"><strong>(+84) 853 897
                                                     558</strong></a></h3>
-                                        <p>EnglishReview sẽ hỗ trợ thêm cho bạn</p>
+                                        <p>Hoặc báo <a class="text-primary" id="report">tại đây</a>.
+                                            EnglishReview xin cảm ơn!
+                                        </p>
                                     </div>
                                 </div>
                                 <section class="content-body__article--review-block" id="school-intro">
@@ -182,8 +178,8 @@
                                             <input type="hidden" name="user_id" id="user_id"
                                                    value="{{ \Illuminate\Support\Facades\Auth::user()->user_id }}">
                                         @endif
-                                        <div class="content-block-title">
-                                            <h3>Viết nhận xét</h3>
+                                        <div class="content-block-title flex" style="display: flex">
+                                            <h3>Nhận xét</h3>
                                         </div>
                                         <div class="form-group">
                                             <div class="stars-input" id="map_ratings[6]">
@@ -352,12 +348,12 @@
                     </section>
                 </div>
             </div>
-            {{-- Modal --}}
+            {{--Modal Login--}}
             <aside class="modal internal-modal modal--small modal__mobile-full modal--brand__vus"
                    id="modal_login" data-time="20000">
                 <div class="modal__content">
                     <section class="modal__body">
-                        <button class="subtle-btn close-modal-btn" id="close_modal">
+                        <button class="subtle-btn close-modal-btn" id="close_modal_login">
                             <span class="icon icon-sm i-times"></span>
                         </button>
                         <div class="content-block-title">
@@ -379,15 +375,68 @@
                 </div>
                 <div class="modal__backdrop"></div>
             </aside>
+            {{-- Modal Report--}}
+            <aside class="modal internal-modal modal--small modal__mobile-full modal--brand__vus"
+                   id="modal_report" data-time="20000">
+                <div class="modal__content">
+                    <section class="modal__body">
+                        <button class="subtle-btn close-modal-btn" id="close_modal_report">
+                            <span class="icon icon-sm i-times"></span>
+                        </button>
+                        <div class="content-block-title">
+                            <h2>Phiếu báo cáo</h2>
+
+                        </div>
+                        <div>
+                            <br>
+                            <div class="content-block-title">
+                                <h2>{{ $center['name'] }}</h2>
+                            </div>
+                            <br>
+                            <div class="mdc-card__actions">
+                                <div class="form-block fluid">
+                                    <form class="form submit-form" action="{{ route('report.create') }}"
+                                          method="POST">
+                                        @csrf
+                                        @if( \Illuminate\Support\Facades\Auth::check())
+                                            <input type="hidden" name="user_id"
+                                                   value="{{ \Illuminate\Support\Facades\Auth::user()->user_id }}">
+                                        @endif
+
+                                        <input type="hidden" name="center_id"
+                                               value="{{ $center['center_id'] }}">
+                                        <div class="form-group">
+                                            <input class="form-input" type="text" name="title" placeholder="Chủ đề">
+                                        </div>
+                                        <div class="form-group">
+                                                <textarea name="contents" class="form-input"
+                                                          placeholder="Nội dung" rows="4"></textarea>
+                                        </div>
+                                        <div>
+                                            <button
+                                                class="submit_btn submit_btn__primary mdc-button mdc-button--unelevated fluid mdc-ripple-upgraded"
+                                                type="submit">
+                                                <span class="mdc-button__ripple"></span>
+                                                <span class="mdc-button__label">Gửi báo cáo</span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="modal__backdrop"></div>
+            </aside>
         </main>
-        <!-- Modal -->
     @endforeach
 @stop
 @section('footer')
     <script>
         $(document).ready(function () {
 
-            let modal = document.getElementById('modal_login');
+            let modalLogin = document.getElementById('modal_login');
+            let modalReport = document.getElementById('modal_report');
             let limit = 2;
 
             $('#button-submit').on('click', function (event) {
@@ -413,13 +462,21 @@
                     });
                 } else {
                     setTimeout(function () {
-                        modal.classList.add('active');
+                        modalLogin.classList.add('active');
                     }, 500);
                 }
             });
+            $('#report').on('click', function (event) {
+                setTimeout(function () {
+                    modalReport.classList.add('active');
+                }, 500);
+            });
 
-            $('#close_modal').on('click', function () {
-                modal.classList.remove('active')
+            $('#close_modal_login').on('click', function () {
+                modalLogin.classList.remove('active')
+            })
+            $('#close_modal_report').on('click', function () {
+                modalReport.classList.remove('active')
             })
 
             $('#showMore').on('click', function () {
@@ -442,5 +499,8 @@
             })
         });
     </script>
+    @if( session()->get('report_success'))
+        <script> alert('{{ session()->get('report_success') }}')</script>
+    @endif
 @stop
 

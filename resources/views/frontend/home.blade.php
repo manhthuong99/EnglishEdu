@@ -20,9 +20,10 @@
                         <div class="hide-tablet-less">
                             <h1 class="tag-line" style="max-width: 80%;">Tìm nơi học phù
                                 hợp<br><span>Học phí tốt nhất</span></h1>
-                            <form class="home-main-form" role="filter-form" novalidate="true">
+                            <form class="home-main-form" action="{{ route('center.filter') }}" method="POST">
+                                @csrf
                                 <div class="form-group">
-                                    <select class="form-select fluid" name="location" id="l-sel">
+                                    <select class="form-select fluid" name="province_id" id="l-sel">
                                         <option value="">Địa điểm bạn tìm?</option>
                                         @foreach( $provinces as $province)
                                         <option value="{{ $province['id'] }}">{{ $province['name'] }}</option>
@@ -30,7 +31,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select id="t-c-sel" class="form-select fluid" name="major-cate">
+                                    <select id="t-c-sel" class="form-select fluid" name="type">
                                         <option value="0">Khóa học cần tìm?</option>
                                         <option value="Giao tiếp cơ bản">Giao tiếp cơ bản</option>
                                         <option value="Giao tiếp nâng cao">Giao tiếp nâng cao</option>
@@ -41,7 +42,7 @@
                                 </div>
                                 <button style="margin-left: 0; margin-right: 0;" id="f-btn"
                                         class="attention_btn attention_btn__r30 mdc-button mdc-button--raised fluid mdc-ripple-upgraded"
-                                        type="button">
+                                        type="submit">
                                     <span class="mdc-button__ripple"></span>
                                     <span class="icon i-search n0"></span>&nbsp;
                                     <span class="mdc-button__label">Tra cứu thông tin</span>

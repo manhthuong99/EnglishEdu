@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
 @stop
 @section('main')
+    @if($total > 0)
     <main id="e2r-page" style="padding-top: 3.4rem;">
         <div class="mdc-layout-grid content-block layout-shim">
             <div class="mdc-layout-grid__inner content-body">
@@ -79,11 +80,12 @@
                                     class="page-link"><i class="fas fa-angle-left"></i>
                                 </a>
                             </li>
-                            @for( $i = 1; $i < 5; $i++)
+                            @for( $i = 1; $i < 4; $i++)
                                 <li class="paginate_button page-item">
                                     <a href="{{ route('center.top',$i) }}" class="page-link">{{ $i }}</a>
                                 </li>
                             @endfor
+                            @if( $total > 3)
                             <li class="paginate_button page-item">
                                 <a href="#" class="page-link">...</a>
                             </li>
@@ -97,11 +99,25 @@
                                     <i class="fas fa-angle-right"></i>
                                 </a>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </section>
             </div>
         </div>
     </main>
+    @else
+        <main id="e2r-page" style="padding-top: 3.4rem;">
+            <div class="mdc-layout-grid content-block layout-shim">
+                <div class="mdc-layout-grid__inner">
+                    <section class="mdc-layout-grid__cell--span-12">
+                        <article class="content-body__article">
+                            <h1 class="content-header__title">Oops 404, không tìm thấy kết quả phù hợp...</h1>
+                        </article>
+                    </section>
+                </div>
+            </div>
+        </main>
+    @endif
 @stop
 

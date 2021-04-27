@@ -8,7 +8,6 @@
     <main id="e2r-page" style="padding-top: 3.4rem;">
         <div class="mdc-layout-grid content-block layout-shim">
             <div class="mdc-layout-grid__inner content-body">
-
                 <section class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                     <div class="content-body__article">
                         <div><span id="resultNum" class="text-prim bold">{{ $total }}</span> Kết quả.
@@ -118,10 +117,6 @@
                             </li>
                         </ul>
                     </div>
-{{--                    <button data-loading="Đang tải..." data-next="36" id="load-mores"--}}
-{{--                            class="more_btn more_btn__white mdc-button mdc-button--outlined fluid view-more mdc-ripple-upgraded"--}}
-{{--                            data-loadmore="198" style="display:block;">Xem thêm--}}
-{{--                    </button>--}}
                 </section>
             </div>
         </div>

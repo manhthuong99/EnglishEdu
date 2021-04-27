@@ -116,4 +116,12 @@ class Course extends Controller
             ->get()->toArray();
         return $data;
     }
+
+    public function detailCourse($courseId)
+    {
+        $data['courses'] = \App\Models\Course::with('center')
+            ->where('course_id', $courseId)
+            ->get()->toArray();
+        return view('frontend.course.detail', $data);
+    }
 }

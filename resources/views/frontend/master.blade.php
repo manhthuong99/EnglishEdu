@@ -78,11 +78,11 @@
                 </ul>
             </nav>
             <div class="hide-xl-less fluid header-search">
-                <form id="d-search-form" class="form-group" role="search-form" method="GET" name="search" action=""
-                      novalidate="true">
+                <form id="d-search-form" class="form-group" method="POST" action="{{ route('center.filter') }}">
+                    @csrf
                     <div class="form-grouping fluid">
                         <input autocomplete="off" id="d-search-input" class="form-input txtSearchSchool" type="search"
-                               name="q" placeholder="Tìm kiếm...">
+                               name="search" placeholder="Tìm kiếm...">
                         <span class="loading" style="transform: translateX(-1rem); display: none;"></span>
                         <div style="display:none;" class="filter-school-result ac-results d-auto-suggestion">
                             <div class="menu mdc-card">

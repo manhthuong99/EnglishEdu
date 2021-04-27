@@ -94,10 +94,13 @@ Route::group(['prefix' => '/'],function () {
     Route::get('trung-tam/{centerId}','Center@show')->name('center.detail');
     Route::post('danh-gia','Center@review')->name('center.review');
     Route::post('xem-them','Center@showMore')->name('center.showMore');
+    Route::post('cac-trung-tam-phu-hop','Center@filter')->name('center.filter');
 
 
-    Route::get('/{type}/page/{page}','Course@filter')->name('course.filter');
-    Route::get('/khoa-hoc/{courseId}','Course@filter')->name('course.detail');
+    Route::get('{type}/page/{page}','Course@filter')->name('course.filter');
+    Route::get('chi-tiet-khoa-hoc/{courseId}','Course@detailCourse')->name('course.detail');
 
     Route::post('nhan-tu-van','Consulting@create')->name('consulting.create');
+
+    Route::post('Báo cáo','Report@create')->name('report.create');
 });

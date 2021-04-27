@@ -81,11 +81,29 @@ class Center extends Controller
 
     public function updateRate($centerId)
     {
-        $review = \App\Models\Review::where('center_id',$centerId);
-        $ave_star = $review->sum('rate')/$review->count();
+        $review = \App\Models\Review::where('center_id', $centerId);
+        $ave_star = $review->sum('rate') / $review->count();
         $center = \App\Models\Center::find($centerId);
         $center->ave_star = $ave_star;
         $center->save();
+    }
 
+    public function filter(Request $request)
+    {
+        $models = \App\Models\Course::
+        join('english_center', 'english_center.center_id', '=', 'course.center_id')
+            ->orderBy('english_center.ave_star', 'DESC')
+            ->where('english_center.status', self::ENABLE);
+        if ($request->search) {
+            $models->where('english_center.name', 'LIKE', "%{$request->search}%");
+        } else {
+            $models->where('english_center.province_id', $request->province_id)
+                ->where('course.type', $request->type);
+        }
+
+        $data['total'] = $models->count('english_center.center_id');
+        $data['centers'] = $models->limit(10)
+            ->get()->toArray();
+        return view('frontend.center.top_center', $data);
     }
 }
