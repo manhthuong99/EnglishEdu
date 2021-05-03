@@ -28,5 +28,22 @@ $(document).ready(function (e) {
         });
         fileReader.readAsDataURL(f);
     }));
+    $('#province_id').on('change', function () {
+        let provinceId = $('#province_id').val()
+        $.ajax({
 
+            type: 'POST',
+            url: '/admin/center/district',
+            // dataType: "json",
+            data: ({
+                "id": provinceId
+            }),
+            success: function (data) {
+                $("#district_id").html(data)
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    })
 })

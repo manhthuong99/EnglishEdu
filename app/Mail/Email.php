@@ -27,11 +27,15 @@ class Email extends Mailable
      */
     public function build()
     {
+        $data['data'] = $this->data;
         switch ($this->type){
             case 'forgot_password':
             {
-                $data['url'] = $this->data;
                 return $this->view('mail.forgot_password',$data);
+            }
+            case 'approve_center':
+            {
+                return $this->view('mail.approve_center',$data);
             }
         }
 

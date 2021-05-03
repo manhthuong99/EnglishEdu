@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class CheckLoginAdmin
 {
     const ADMIN_PERMISSION = 0;
+    const CENTER_PERMISSION = 2;
 
     /**
      * Handle an incoming request.
@@ -22,7 +23,7 @@ class CheckLoginAdmin
 
         if (Auth::check()) {
             $user = Auth::user();
-            if ($user->permission == self::ADMIN_PERMISSION) {
+            if ($user->permission == self::ADMIN_PERMISSION || $user->permission == self::CENTER_PERMISSION ) {
                 return $next($request);
             } else {
                 return redirect(route('admin.login'));

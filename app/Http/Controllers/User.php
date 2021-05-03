@@ -4,7 +4,9 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\District;
 use App\Models\PasswordReset;
+use App\Models\RegisterCenter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,11 +18,18 @@ class User extends Controller
 {
     const STATUS_ENABLE = 1;
     const USER_PERMISSION = 1;
+    const CENTER_PERMISSION = 2;
 
     public function index($userId)
     {
         if (Auth::check()) {
-            return view('frontend.user.my_account');
+            $user = Auth::user();
+            if ($user->district_id && $user->province_id){
+                $data['districts'] = District::orderBy('name')
+                    ->where('province_id',$user->province_id)->get()->toArray();
+            }
+            $data['provinces'] = \App\Models\Province::orderBy('name')->get();
+            return view('frontend.user.my_account',$data);
         } else return redirect()->back();
     }
 
@@ -35,7 +44,7 @@ class User extends Controller
             'email' => $request->email,
             'password' => $request->password,
             'type_login' => 'default',
-            'permission' => self::USER_PERMISSION,
+            'permission' => [self::USER_PERMISSION,self::CENTER_PERMISSION],
             'status' => self::STATUS_ENABLE
         ];
         if (Auth::attempt($arr)) {
@@ -110,8 +119,12 @@ class User extends Controller
             $passwordReset->token = $token;
             $passwordReset->email = $request->email;
             $passwordReset->save();
-            Mail::to($request->email)->send(new \App\Mail\Email($url, 'forgot_password'));
-            Mail::to('mthuong03@gmail.com')->send(new \App\Mail\Email($url, 'forgot_password'));
+            $data = [
+                'url' => $url,
+                'name' => $user->full_name
+            ];
+            Mail::to($request->email)->send(new \App\Mail\Email($data, 'forgot_password'));
+//            Mail::to('mthuong03@gmail.com')->send(new \App\Mail\Email($data, 'forgot_password'));
             return redirect()->back()->with('success', 'success');
         } else {
             return redirect()->back()->with('failed', 'email bạn vừa nhập không tồn tại.');
@@ -150,6 +163,12 @@ class User extends Controller
             $data->avatar = $this->uploadAvatar($request->avatar);
         }
         $data->phone_number = $request->phone_number;
+        $data->full_name = $request->full_name;
+        $data->email = $request->email;
+        $data->province_id = $request->province_id;
+        $data->birthday = $request->birthday;
+        $data->birthday = $request->birthday;
+        $data->address = $request->address;
         $data->save();
         return redirect()->back()->with('success', 'Cập nhật thành công!');
     }
@@ -159,6 +178,16 @@ class User extends Controller
         $avatar->storeAs('/avatars', $fileName, 'public');
         return $fileName;
     }
-
+    public function registerCenter($userId){
+        if (Auth::check()){
+            $data = new RegisterCenter();
+            $data->user_id = $userId;
+            $data->save();
+            return redirect()->back()->with('register_center','Gửi yêu cầu thành công! English Review sẽ liên lạc với bạn sớm nhất.');
+        }
+        else{
+            return redirect()->back()->with('register_center','Bạn cần đăng nhập để thực hiện yêu cầu');
+        }
+    }
 
 }

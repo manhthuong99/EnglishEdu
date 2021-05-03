@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>English Vip Pro</title>
+    <title>Admin EnglishReview</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/img/icons/hacker.png') }}" type="image/x-icon">
     <!-- Fonts -->
@@ -43,7 +43,7 @@
                         <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button"
                            aria-expanded="true" aria-controls="navbar-dashboards">
                             <i class="ni ni-shop text-primary"></i>
-                            <span class="nav-link-text">Trang chủ</span>
+                            <span class="nav-link-text">Trang chủ </span>
                         </a>
                         <div class="collapse show" id="navbar-dashboards">
                             <ul class="nav nav-sm flex-column">
@@ -53,11 +53,12 @@
                             </ul>
                         </div>
                     </li>
+                    @if(\Illuminate\Support\Facades\Auth::user()->permission == 0)
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button"
                            aria-expanded="false" aria-controls="navbar-examples">
                             <i class="ni ni-circle-08 text-orange"></i>
-                            <span class="nav-link-text">Quản lý người dùng</span>
+                            <span class="nav-link-text">Quản lý người dùng </span>
                         </a>
                         <div class="collapse" id="navbar-examples">
                             <ul class="nav nav-sm flex-column">
@@ -70,6 +71,7 @@
                             </ul>
                         </div>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-components" data-toggle="collapse" role="button"
                            aria-expanded="false" aria-controls="navbar-components">
@@ -83,6 +85,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('admin.center.index') }}" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.center.registerCenter') }}" class="nav-link"><i class="ni ni-spaceship"></i>Yêu cầu</a>
                                 </li>
                             </ul>
                         </div>

@@ -2,14 +2,13 @@
 @section('header')
     <link rel="stylesheet" href="{{ asset('frontend/css/user_login.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/my-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
 @stop
 @section('main')
-    @if( session()->get('success'))
-           <script> alert('{{ session()->get('success') }}')</script>
-    @endif
     @if(\Illuminate\Support\Facades\Auth::check())
         <main id="e2r-page">
-            <form id="findYourCourseLeadForm" class="form" method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
+            <form id="findYourCourseLeadForm" class="form" method="POST" action="{{ route('user.update') }}"
+                  enctype="multipart/form-data">
                 @csrf
                 <div class="mdc-layout-grid content-block layout-shim">
                     <div class="mdc-layout-grid__inner content-body" id="hide-when-show-otp">
@@ -17,7 +16,7 @@
                             <div class="mdc-card form__sticky-side form__sticky-side--sticky-head">
                                 <div>
                                     <div class="avatar-group">
-                                        <figure class="avatar avatar__xl">
+                                        <figure class="avatar avatar__xxl">
                                             @php($user = \Illuminate\Support\Facades\Auth::user())
                                             @if($user->type_login == 'facebook' || $user->type_login == 'google')
                                                 <img id="avatar-header-img" src="{{ $user->avatar }}" alt=""
@@ -28,83 +27,145 @@
                                             @endif
                                         </figure>
                                         <div class="avatar-group__info avatar-group__info--xl">
-                                            <div class="user-name">{{ $user->full_name }}</div>
+                                            <div class="user-name"><h3>{{ $user->full_name }}</h3></div>
                                             <div class="user-name">
                                                 <input type="hidden" name="user_id" value="{{ $user->user_id }}">
-                                                <input class="btn-outline-success" type="file" name="avatar" id="avatar" hidden="">
+                                                <input class="btn-outline-success" type="file" name="avatar" id="avatar"
+                                                       hidden="">
                                                 <label class="btn btn-sm btn-success mt-3" for="avatar">Thay đổi</label>
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
-                                <ul class="menu-list" aria-orientation="vertical">
-                                    <li class="menu-list__item">
-                                        <a class="button subtle-btn" href=""><span
-                                                class="icon i-user n70"></span> Trang cá nhân</a>
-                                    </li>
-                                    <li class="menu-list__item">
-                                        <a class="button subtle-btn"
-                                           href="https://edu2review.com/u/VN2108983369/da-mua"><span
-                                                class="icon i-cash-register n70"></span> Đã mua</a>
-                                    </li>
-                                </ul>
+                                @if($user->permission == 1)
+                                    <ul class="menu-list" aria-orientation="vertical">
+                                        <li class="menu-list__item">
+                                            <a class="button subtle-btn"
+                                               href="{{ route('user.registerCenter',$user->user_id) }}">
+                                                <span class="ni ni-hat-3 text-lg"> </span>
+                                                &nbsp;Đăng kí mở trung tâm
+                                            </a>
+                                        </li>
+                                    </ul>
+                                @endif
                             </div>
                         </aside>
                         <section class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8">
                             <div class="content-body__article">
                                 <div class="content-body__article">
-                                    <div class="toast b0" style="width: fit-content; margin: 2rem auto;">
-                                        <div class="flex-center">
-                                            <div style="max-width: 120px; margin: 1rem; align-self: flex-start;"
-                                                 class="hide-sm-less">
-                                                <img class="initial fluid loading"
-                                                     src="{{ asset('frontend/img/icons/talk.svg') }}"
-                                                     data-ll-status="loading">
-                                            </div>
-                                            <div style="margin: 0.4rem;">
-                                                <div>
-                                                    <h3 class="b70">Chào mừng bạn đến với gia đình English Review!</h3>
-                                                    <p>Bạn có đang tìm kiếm khóa học tiếng Anh nào không? Nếu có, chúng
-                                                        tôi
-                                                        sẽ
-                                                        giúp bạn chọn nơi học phù hợp.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="flex-center">
-                                            <input type="hidden" name="email" value="">
-                                            <div class="form-fields">
-                                                <div>
-                                                    <h3 class="b70"></h3>
-                                                </div>
-                                                <div
-                                                    class="mdc-text-field mdc-text-field--outlined textfield-custom fluid">
-                                                <span class="mdc-notched-outline mdc-notched-outline--upgraded">
-                                                <span class="mdc-notched-outline__leading"></span>
-                                                <span class="mdc-notched-outline__notch">
-                                                <label for="phone-vouchers-d"
-                                                       class="mdc-floating-label mdc-floating-label--required"
-                                                       style="">Số điện thoại của bạn.</label>
-                                                </span>
-                                                <span class="mdc-notched-outline__trailing"></span>
-                                                </span>
-                                                    <input id="phone-vouchers-d" name="phone_number" type="tel"
-                                                           class="mdc-text-field__input"
-                                                           value="{{ $user->phone_number }}"
-                                                           aria-labelledby="phone-vouchers-d" required="">
-                                                    <div class="error-message"></div>
-                                                </div>
-                                                <button style="margin:0;" id="updateAccount"
-                                                        class="attention_btn attention_btn__r30 mdc-button mdc-button--unelevated fluid mdc-ripple-upgraded"
-                                                        data-updating="Đang tìm khóa học...">
-                                                    <span class="mdc-button__ripple"></span>
-                                                    <span class="mdc-button__label">Cập nhật!</span>
-                                                </button>
-                                            </div>
-                                            <div id="findYourCourseResult" class="" style="display: none;"></div>
-                                        </div>
+                                    <div class="content-block-title">
+                                        <h3>Thông tin cá nhân</h3>
                                     </div>
+                                    <form class="form" action="{{ route('user.update') }}" style="display: block;">
+                                        <div
+                                            class="mdc-text-field mdc-text-field--outlined textfield-custom fluid mdc-text-field--label-floating">
+                                            <input id="full_name" name="full_name" type="text"
+                                                   class="mdc-text-field__input" value="{{ $user->full_name }}"
+                                                   required="">
+                                            <div
+                                                class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched">
+                                                <div class="mdc-notched-outline__leading"></div>
+                                                <div class="mdc-notched-outline__notch" style="width: 90.5px;">
+                                                    <label for="full_name"
+                                                           class="mdc-floating-label mdc-floating-label--required mdc-floating-label--float-above"
+                                                           style="">Họ và tên</label>
+                                                </div>
+                                                <div class="mdc-notched-outline__trailing"></div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="mdc-text-field mdc-text-field--outlined textfield-custom fluid mdc-text-field--label-floating">
+                                            <input id="phone_number" name="phone_number" type="tel"
+                                                   autocomplete="tel-national" class="mdc-text-field__input"
+                                                   value="{{ $user->phone_number }}" required="">
+                                            <div
+                                                class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched">
+                                                <div class="mdc-notched-outline__leading"></div>
+                                                <div class="mdc-notched-outline__notch" style="width: 115.25px;">
+                                                    <label for="phone_number"
+                                                           class="mdc-floating-label mdc-floating-label--required mdc-floating-label--float-above"
+                                                           style="">Số điện thoại</label>
+                                                </div>
+                                                <div class="mdc-notched-outline__trailing"></div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="mdc-text-field mdc-text-field--outlined textfield-custom fluid mdc-text-field--label-floating">
+                                            <input value="{{ $user->email }}" id="email" name="email" type="email"
+                                                   class="mdc-text-field__input" required="">
+                                            <div
+                                                class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched">
+                                                <div class="mdc-notched-outline__leading"></div>
+                                                <div class="mdc-notched-outline__notch" style="width: 58.25px;">
+                                                    <label for="email"
+                                                           class="mdc-floating-label mdc-floating-label--required mdc-floating-label--float-above"
+                                                           style="">Email</label>
+                                                </div>
+                                                <div class="mdc-notched-outline__trailing"></div>
+                                            </div>
+                                            <div class="error-message"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Ngày sinh</label>
+                                            <input name="birthday" class="form-input" id="dob" type="date"
+                                                   value="{{ $user->birthday }}"
+                                                   pattern="\d{4}-\d{2}-\d{2}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Chọn tỉnh thành</label>
+                                            <select name="province_id" id="province_id" class="form-select fluid">
+                                                <option disabled selected value> -- Chọn Tỉnh/TP --</option>
+                                                @foreach($provinces as $province)
+                                                    @if($user->province_id == $province->id)
+                                                        <option value="{{ $province->id }}"
+                                                                selected>{{ $province->name }}</option>
+                                                    @else
+                                                        <option
+                                                            value="{{ $province->id }}">{{ $province->name }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                            <select name="district_id" id="district_id" class="form-select fluid">
+                                                <option disabled value="" selected="selected">-- Chọn Quận/Huyện --
+                                                </option>
+                                                @if($user->district_id)
+                                                    @foreach($districts as $district)
+                                                        @if($user->district_id == $district['id'])
+                                                            <option value="{{ $district['id'] }}"
+                                                                    selected>{{ $district['name'] }}</option>
+                                                        @else
+                                                            <option
+                                                                value="{{ $district['id'] }}">{{ $district['name'] }}</option>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                            <div class="error-message" id="locationError"></div>
+                                        </div>
+                                        <div class="mdc-text-field mdc-text-field--outlined textfield-custom fluid">
+                                            <input value="{{ $user->address }}" id="address" name="address" type="text"
+                                                   class="mdc-text-field__input">
+                                            <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+                                                <div class="mdc-notched-outline__leading"></div>
+                                                <div class="mdc-notched-outline__notch">
+                                                    <label for="address" class="mdc-floating-label" style="">Địa
+                                                        chỉ</label>
+                                                </div>
+                                                <div class="mdc-notched-outline__trailing"></div>
+                                            </div>
+                                            <div class="error-message"></div>
+                                        </div>
+                                        <div style="display:none;" id="update-profile-status" class="toast"></div>
+                                        <div class="button-group">
+                                            <button type="submit" id="submitProfile"
+                                                    class="attention_btn attention_btn__primary attention_btn__medium mdc-button mdc-button--unelevated fluid mdc-ripple-upgraded"
+                                                    data-text="Cập nhật" data-updating="Đang xử lý...">
+                                                <span class="mdc-button__ripple"></span>
+                                                <span class="mdc-button__label">Cập nhật</span>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <br>
@@ -114,5 +175,9 @@
             </form>
         </main>
     @endif
+    @if( session()->get('success'))
+        <script> alert('{{ session()->get('success') }}')</script>
+    @endif
 @stop
+
 

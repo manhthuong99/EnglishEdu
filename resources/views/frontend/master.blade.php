@@ -3,6 +3,7 @@
 <html lang="vi-VN">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>EnglishReview: Nền tảng đánh giá khoá học xịn nhất Việt Nam </title>
     <link rel="icon" href="{{ asset('frontend/img/icons/logo.svg') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.1.0') }}" type="text/css">
@@ -125,6 +126,11 @@
                             <li class="mdc-list-item" role="subMenuItem" tabindex="0">
                                 <a class="list-item-link" href="{{ route('user.change_password') }}">Thay đổi mật khẩu</a>
                             </li>
+                            @if($user->permission == 1)
+                                <li class="mdc-list-item" role="subMenuItem" tabindex="0">
+                                    <a class="list-item-link" href="{{ route('user.registerCenter',$user->user_id) }}">Đăng ký mở trung tâm</a>
+                                </li>
+                            @endif
                             <li class="mdc-list-item" role="subMenuItem" tabindex="0">
                                 <a class="list-item-link" href="{{ route('user.logout') }}">Thoát</a>
                             </li>
@@ -259,4 +265,9 @@
 <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('frontend/js/custom.js') }}"></script>
 <script src="{{ asset('frontend/js/users.js') }}"></script>
+@if(session()->get('register_center'))
+    <script>
+        alert('{{ session()->get('register_center') }}')
+    </script>
+@endif
 @yield('footer')

@@ -1216,13 +1216,13 @@ var PointsChart = (function () {
                     showLine: false
                 }]
             }
-        });
+        })
 
         // Save to jQuery object
 
         $this.data('chart', salesChart);
 
-    };
+    }
 
 
     // Events
@@ -1260,7 +1260,7 @@ var SalesChart = (function () {
         });
         $.ajax({
             type: 'GET',
-            url: '/admin/dashboard/data',
+            url: '/admin/dashboards/data',
             // dataType: "json",
             success: function (data) {
                 var salesChart = new Chart($this, {
@@ -1295,7 +1295,7 @@ var SalesChart = (function () {
 
         $this.data('chart', salesChart);
 
-    };
+    }
 
 
     // Events

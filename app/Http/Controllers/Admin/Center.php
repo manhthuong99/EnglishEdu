@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\RegisterCenter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class Center extends Controller
 {
@@ -16,10 +19,16 @@ class Center extends Controller
 
     public function index()
     {
-        $data['centers'] = \App\Models\Center::with('user')
-            ->join('user', 'user.user_id', '=', 'english_center.user_id')
-            ->where('user.permission', self::CENTER_PERMISSION)
-            ->get()->toArray();
+        $user = Auth::user();
+        $model = \App\Models\Center::with('user')
+            ->join('user', 'user.user_id', '=', 'english_center.user_id');
+        if ($user->permission == 0) {
+            $model->where('user.permission', self::CENTER_PERMISSION);
+        }
+        if ($user->permission == 2) {
+            $model->where('user.user_id', $user->user_id);
+        }
+        $data['centers'] = $model->get()->toArray();
         return view('admin.center.show', $data);
     }
 
@@ -154,5 +163,45 @@ class Center extends Controller
 
         return $address;
 
+    }
+
+    public function registerCenter()
+    {
+        $data['registerCenters'] = RegisterCenter::with('user')
+            ->orderByDesc('id')->get()->toArray();
+        return view('admin.center.register_center', $data);
+    }
+
+    public function requestDelete($requestId)
+    {
+        $result = \App\Models\RegisterCenter::find($requestId);
+        $result->delete();
+        return redirect()->back()->with('success', 'Xóa thành công!');
+    }
+
+    public function approve($requestId)
+    {
+        $request = \App\Models\RegisterCenter::find($requestId);
+        $request->status = 1;
+        $request->save();
+        $user = \App\Models\User::find($request->user_id);
+        $user->permission = 2;
+        $user->save();
+        try {
+            $this->sendMail($user->email, $user->full_name);
+        } catch (\Exception $e) {
+
+        }
+        return redirect()->back()->with('success', 'Xác nhận thành công!');
+    }
+
+    public function sendMail($email, $name)
+    {
+        $data = [
+            'email' => $email,
+            'name' => $name,
+            'url' => route('admin.login')
+        ];
+        Mail::to($email)->send(new \App\Mail\Email($data, 'approve_center'));
     }
 }

@@ -23,7 +23,7 @@
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item"><a href="#">Quản lý báo cáo</a></li>
+                                <li class="breadcrumb-item"><a href="#">Quản lý yêu cầu mở trung tâm</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
                             </ol>
                         </nav>
@@ -43,7 +43,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header">
-                        <h3 class="mb-0">DANH SÁCH BÁO CÁO</h3>
+                        <h3 class="mb-0">DANH SÁCH YÊU CẦU</h3>
                         @if( session()->get('success'))
                             <div class="success">
                                 <span style="color: green">{{ session()->get('success') }}</span>
@@ -55,25 +55,31 @@
                             <thead class="thead-light">
                             <tr>
                                 <th>STT</th>
-                                <th>Trung tâm</th>
                                 <th>Người dùng</th>
-                                <th>Nội dung</th>
+                                <th>Số điện thoại</th>
+                                <th>Số email</th>
+                                <th>Trạng thái</th>
                                 <th>Thời gian</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach( $reports as $key => $report)
+                            @foreach( $registerCenters as $key => $registerCenter)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $report['center']['name'] }}</td>
-                                    @if(isset($report['user']['full_name']))
-                                        <td>{{ $report['user']['full_name'] }}</td>
+                                    @if(isset($registerCenter['user']['full_name']))
+                                        <td>{{ $registerCenter['user']['full_name'] }}</td>
                                     @else
                                         <td></td>
                                     @endif
-                                    <td style="white-space: pre-wrap">{{ $report['content'] }}</td>
-                                    <td>{{ date("d/m/Y H:m:s", strtotime($report['created_at'])) }}</td>
+                                    <td>{{ $registerCenter['user']['phone_number'] }}</td>
+                                    <td>{{ $registerCenter['user']['email'] }}</td>
+                                    @if($registerCenter['status'] == 0)
+                                        <td class="text-yellow">Đang chờ duyệt</td>
+                                    @else
+                                        <td class="text-green">Đã duyệt</td>
+                                    @endif
+                                    <td>{{ date("d/m/Y H:m:s", strtotime($registerCenter['created_at'])) }}</td>
                                     <td>
                                         <div class="dropdown">
                                         <span class="btn btn-sm btn-icon-only text-danger" role="button"
@@ -83,7 +89,9 @@
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                                                  style="width: 100px">
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.report.delete',$report['report_id']) }}">Xóa</a>
+                                                   href="{{ route('admin.center.approve',$registerCenter['id']) }}">Đồng ý</a>
+                                                <a class="dropdown-item"
+                                                   href="{{ route('admin.center.request_delete',$registerCenter['id']) }}">Xóa</a>
                                             </div>
                                         </div>
                                     </td>

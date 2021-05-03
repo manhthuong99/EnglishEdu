@@ -13,6 +13,7 @@ class User extends Controller
     const ADMIN_PERMISSION = 0;
     const ENABLE = 1;
     const USER_PERMISSION = 1;
+    const CENTER_PERMISSION = 2;
     /**
      * @var \App\Models\User
      */
@@ -30,7 +31,8 @@ class User extends Controller
         $arr = [
             'email' => $request->email,
             'password' => $request->password,
-            'permission' => self::ADMIN_PERMISSION,
+            'type_login' => 'default',
+            'permission' => [self::ADMIN_PERMISSION,self::CENTER_PERMISSION],
             'status' => self::ENABLE
         ];
         if (Auth::attempt($arr)) {

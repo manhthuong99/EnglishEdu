@@ -36,19 +36,22 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.checkLogin']], functi
 
     Route::get('/tao-moi-trung-tam', 'Admin\Center@create')->name('admin.center.create');
     Route::get('/danh-sach-trung-tap', 'Admin\Center@index')->name('admin.center.index');
-    Route::get('/center/edit/{centerId}', 'Admin\Center@edit')->name('admin.center.edit');
+    Route::get('/thong-tin-trung-tam/{centerId}', 'Admin\Center@edit')->name('admin.center.edit');
     Route::post('/center/save', 'Admin\Center@save')->name('admin.center.save');
-    Route::get('/center/course/{centerId}', 'Admin\Course@index')->name('admin.center.course');
+    Route::get('/danh-sach-khoa-hoc-cua-trung-tam/{centerId}', 'Admin\Course@index')->name('admin.center.course');
+    Route::get('/yeu-cau-mo-trung-tam', 'Admin\Center@registerCenter')->name('admin.center.registerCenter');
+    Route::get('/xóa-yeu-cau/{requestId}', 'Admin\Center@requestDelete')->name('admin.center.request_delete');
+    Route::get('/xac-nhan/{requestId}', 'Admin\Center@approve')->name('admin.center.approve');
 
-    Route::get('/course', 'Admin\Course@index')->name('admin.course.index');
-    Route::get('/course/new', 'Admin\Course@create')->name('admin.course.create');
+    Route::get('/danh-sach-khoa-hoc', 'Admin\Course@index')->name('admin.course.index');
+    Route::get('/tao-moi-khoa-hoc', 'Admin\Course@create')->name('admin.course.create');
     Route::post('/course/save', 'Admin\Course@save')->name('admin.course.save');
-    Route::get('/course/edit/{courseId}', 'Admin\Course@edit')->name('admin.course.edit');
+    Route::get('/thong-tin-khoa-hoc/{courseId}', 'Admin\Course@edit')->name('admin.course.edit');
 
-    Route::get('/review', 'Admin\Review@index')->name('admin.review.index');
+    Route::get('/danh-gia', 'Admin\Review@index')->name('admin.review.index');
     Route::get('/review/delete/{reviewId}', 'Admin\Review@delete')->name('admin.review.delete');
 
-    Route::get('/report', 'Admin\Report@index')->name('admin.report.index');
+    Route::get('/bao-cao', 'Admin\Report@index')->name('admin.report.index');
     Route::get('/report/delete/{reportId}', 'Admin\Report@delete')->name('admin.report.delete');
 
     Route::get('/', function () {
@@ -85,6 +88,7 @@ Route::group(['prefix' => '/'],function () {
     })->name('password.reset');
     Route::post('xac-nhan-mat-khau','User@resetPassword')->name('user.resetPassword');
     Route::get('thong-tin-tai-khoan/{userId}','User@index')->name('user.myAccount');
+    Route::get('dang-ki-trung-tam/{userId}','User@registerCenter')->name('user.registerCenter');
     Route::post('cap-nhat-thong-tin}','User@update')->name('user.update');
 
 
