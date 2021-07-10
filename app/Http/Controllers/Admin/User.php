@@ -14,17 +14,6 @@ class User extends Controller
     const ENABLE = 1;
     const USER_PERMISSION = 1;
     const CENTER_PERMISSION = 2;
-    /**
-     * @var \App\Models\User
-     */
-    private $user;
-
-    public function __construct(
-        \App\Models\User $user
-    )
-    {
-        $this->user = $user;
-    }
 
     public function checkLogin(Request $request)
     {

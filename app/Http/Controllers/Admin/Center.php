@@ -59,7 +59,6 @@ class Center extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->phone_number = $request->phone_number;
-        $data->website = $request->website;
         $data->description = $request->description;
         $data->user_id = $request->user_id;
         $data->province_id = $request->province_id;
@@ -69,10 +68,10 @@ class Center extends Controller
             $data->avatar = $this->uploadAvatar($request->avatar);
         }
         if ($checkName) {
-            return redirect($url)->with('failed', 'Trung tâm ' . $request->name . ' đã tồn tại!');
+            return redirect()->back()->with('failed', 'Trung tâm ' . $request->name . ' đã tồn tại!');
         } else {
             $data->save();
-            return redirect($url)->with('success', 'Trung tâm ' . $request->name . ' cập nhật thành công!');
+            return redirect()->back()->with('success', 'Trung tâm ' . $request->name . ' cập nhật thành công!');
         }
 
     }

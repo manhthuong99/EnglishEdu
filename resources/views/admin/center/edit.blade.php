@@ -82,13 +82,21 @@
                                                 </div>
                                                 <select class="form-control" name="user_id" id="user_id" required>
                                                     <option disabled selected> -- Chọn --</option>
-                                                    @foreach( $users as $key => $user)
-                                                        @if($user->user_id == $center->user_id)
-                                                            <option value="{{ $user->user_id }}" selected>{{ $user->full_name }}</option>
-                                                        @else
-                                                            <option value="{{ $user->user_id }}">{{ $user->full_name }}</option>
-                                                        @endif
-                                                    @endforeach
+                                                    @php($auth = \Illuminate\Support\Facades\Auth::user())
+                                                    @if($auth->permission == 2)
+                                                        <option selected
+                                                                value="{{ $auth->user_id }}">{{ $auth->full_name }}</option>
+                                                    @else
+                                                        @foreach( $users as $key => $user)
+                                                            @if($user->user_id == $center->user_id)
+                                                                <option value="{{ $user->user_id }}"
+                                                                        selected>{{ $user->full_name }}</option>
+                                                            @else
+                                                                <option
+                                                                    value="{{ $user->user_id }}">{{ $user->full_name }}</option>
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -214,19 +222,6 @@
                                                     </div>
                                                     <input class="form-control" placeholder="Địa chỉ" name="address"
                                                            value="{{ $center->address }}" id="" type="text" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label class="form-control-label">Website</label>
-                                                <div class="input-group input-group-merge">
-                                                    <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i
-                                                            class="ni ni-world"></i></span>
-                                                    </div>
-                                                    <input class="form-control" placeholder="Website" name="website"
-                                                           value="{{ $center->website }}" id="website" type="text">
                                                 </div>
                                             </div>
                                         </div>

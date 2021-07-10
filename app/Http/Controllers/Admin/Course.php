@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Controller
 {
@@ -13,20 +14,38 @@ class Course extends Controller
 
     public function index($centerId = null)
     {
+        $user = Auth::user();
+        if ($user->permission == 2){
+            $centers = \App\Models\Center::where('user_id',$user->user_id)->get()->toArray();
+            foreach ($centers as $center){
+                $centerId[] = $center['center_id'];
+            }
+        }
         if ($centerId) {
-            $data['courses'] = \App\Models\Course::where('center_id', $centerId)->get()->toArray();
+            $data['courses'] = \App\Models\Course::with('center')->orderByDesc('course_id')
+            ->whereIn('center_id', $centerId)->get()->toArray();
         }
         else{
-            $data['courses'] = \App\Models\Course::get()->toArray();
+            $data['courses'] = \App\Models\Course::with('center')->orderByDesc('course_id')
+            ->get()->toArray();
         }
         return view('admin.course.show', $data);
     }
 
     public function edit($courseId)
     {
-        $data['centers'] = \App\Models\Center::orderBy('name')
-            ->where('status', self::ENABLE)
-            ->get()->toArray();
+        $user = Auth::user();
+        if ($user->permission == 2){
+            $data['centers'] = \App\Models\Center::orderBy('name')
+                ->where('status', self::ENABLE)
+                ->where('user_id', $user->user_id)
+                ->get()->toArray();
+        }
+        else{
+            $data['centers'] = \App\Models\Center::orderBy('name')
+                ->where('status', self::ENABLE)
+                ->get()->toArray();
+        }
         $data['courses'] = \App\Models\Course::where('course_id', $courseId)
             ->get()->toArray();
         return view('admin.course.edit', $data);
@@ -62,9 +81,9 @@ class Course extends Controller
         $data->input_requirement = $request->input_requirement;
         $data->input_point = $request->input_point;
         if ($data->save()) {
-            return redirect($url)->with('success', 'Khóa học ' . $request->name . ' cập nhật thành công!');
+            return redirect()->back()->with('success', 'Khóa học ' . $request->name . ' cập nhật thành công!');
         } else {
-            return redirect($url)->with('failed', 'Khóa học ' . $request->name . ' cập nhật thất bại!');
+            return redirect()->back()->with('failed', 'Khóa học ' . $request->name . ' cập nhật thất bại!');
         }
 
 
@@ -72,9 +91,18 @@ class Course extends Controller
 
     public function create()
     {
-        $data['centers'] = \App\Models\Center::orderBy('name')
-            ->where('status', self::ENABLE)
-            ->get()->toArray();
+        $user = Auth::user();
+        if ($user->permission == 2){
+            $data['centers'] = \App\Models\Center::orderBy('name')
+                ->where('status', self::ENABLE)
+                ->where('user_id', $user->user_id)
+                ->get()->toArray();
+        }
+        else{
+            $data['centers'] = \App\Models\Center::orderBy('name')
+                ->where('status', self::ENABLE)
+                ->get()->toArray();
+        }
         return view('admin.course.create', $data);
     }
 

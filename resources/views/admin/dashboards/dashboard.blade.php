@@ -149,7 +149,7 @@
                                             </div>
                                         @endfor
                                     </td>
-                                    <td><a class="btn btn-sm btn-outline-success" href="">xem</a></td>
+                                    <td><a class="btn btn-sm btn-outline-success" href="{{ route('center.detail',$bestCenter['center_id']) }}" target="_blank">xem</a></td>
                                 </tr>
                             @endforeach
                             </tbody>

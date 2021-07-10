@@ -38,6 +38,7 @@
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                 <!-- Nav items -->
+                @if(\Illuminate\Support\Facades\Auth::user()->permission == 0)
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button"
@@ -53,7 +54,6 @@
                             </ul>
                         </div>
                     </li>
-                    @if(\Illuminate\Support\Facades\Auth::user()->permission == 0)
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button"
                            aria-expanded="false" aria-controls="navbar-examples">
@@ -71,7 +71,6 @@
                             </ul>
                         </div>
                     </li>
-                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-components" data-toggle="collapse" role="button"
                            aria-expanded="false" aria-controls="navbar-components">
@@ -138,6 +137,59 @@
                         </div>
                     </li>
                 </ul>
+            @else
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button"
+                               aria-expanded="true" aria-controls="navbar-dashboards">
+                                <i class="ni ni-shop text-primary"></i>
+                                <span class="nav-link-text">Trang chủ </span>
+                            </a>
+                            <div class="collapse show" id="navbar-dashboards">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.dashboards.index') }}" class="nav-link">Thống kê</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#navbar-components" data-toggle="collapse" role="button"
+                               aria-expanded="false" aria-controls="navbar-components">
+                                <i class="ni ni-ui-04 text-info"></i>
+                                <span class="nav-link-text">Quản lý trung tâm</span>
+                            </a>
+                            <div class="collapse" id="navbar-components">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.center.create') }}" class="nav-link"><i class="ni ni-bold-right"></i>Tạo mới</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.center.index') }}" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#navbar-forms" data-toggle="collapse" role="button"
+                               aria-expanded="false" aria-controls="navbar-forms">
+                                <i class="ni ni-briefcase-24 text-blue"></i>
+                                <span class="nav-link-text">Quản lý khóa học</span>
+                            </a>
+                            <div class="collapse" id="navbar-forms">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.course.create') }}" class="nav-link"><i class="ni ni-bold-right"></i>Tạo mới</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.course.index') }}" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+            @endif
+
                 <!-- Divider -->
                 <hr class="my-3">
                 <!-- Heading -->
@@ -245,7 +297,7 @@
                                 </a>
                             </div>
                             <!-- View all -->
-                            <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View
+                            <a href="#" class="dropdown-item text-center text-primary font-weight-bold py-3">View
                                 all</a>
                         </div>
                     </li>
@@ -304,7 +356,7 @@
                   <span class="avatar avatar-sm rounded-circle">
                       <img alt="Image placeholder" src="{{ asset('assets/img/theme/avatar_admin.jpg') }}"></span>
                                 <div class="media-body ml-2 d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">Mạnh Thưởng</span>
+                                    <span class="mb-0 text-sm  font-weight-bold">{{ \Illuminate\Support\Facades\Auth::user()->full_name }}</span>
                                 </div>
                             </div>
                         </a>

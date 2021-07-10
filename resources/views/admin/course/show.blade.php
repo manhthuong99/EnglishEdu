@@ -56,6 +56,7 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Khóa Học</th>
+                                <th>Trung tâm</th>
                                 <th>Giá</th>
                                 <th>Loại</th>
                                 <th>Loại Học viên</th>
@@ -77,6 +78,7 @@
                                 <tr>
                                     <td>{{ $i ++ }}</td>
                                     <td>{{ $course['name'] }}</td>
+                                    <td>{{ $course['center']['name'] }}</td>
                                     <td>{{ $course['price'] }} VNĐ</td>
                                     <td>{{ $course['type'] }}</td>
                                     <td>{{ $course['type_customer'] }}</td>

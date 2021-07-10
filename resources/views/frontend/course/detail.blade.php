@@ -62,7 +62,7 @@
                                             </ul>
                                             <h3>Chi tiết khóa học</h3>
                                            <p>
-                                               {{ $course['description'] }}
+                                               {!! $course['description'] !!}
                                            </p>
                                         </article>
                                     </div>

@@ -159,9 +159,9 @@
                                         <h3>Giới thiệu</h3>
                                     </div>
                                     <div id="about-school">
-                                        <div style="max-height: 400px; overflow: hidden; will-change: max-height;">
+                                        <div style="will-change: max-height;">
                                             <p>
-                                                {{ $center['description'] }}
+                                                {!! ($center['description']) !!}
                                             </p>
                                         </div>
                                     </div>
