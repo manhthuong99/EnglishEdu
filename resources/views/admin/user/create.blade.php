@@ -75,6 +75,11 @@
                                                     <span style="color: red">{{ session()->get('failed') }}</span>
                                                 </div>
                                             @endif
+                                            @if( session()->get('success'))
+                                                <div class="form-group">
+                                                    <span style="color: green">{{ session()->get('success') }}</span>
+                                                </div>
+                                                @endif
                                             <div class="form-group">
                                                 <label class="form-control-label">Trạng thái</label>
                                                 <div class="input-group input-group-merge">
@@ -147,7 +152,8 @@
                                                     <span class="input-group-text"><i
                                                             class="ni ni-lock-circle-open"></i></span>
                                                     </div>
-                                                    <input class="form-control" placeholder="nhập lại mật khẩu" name="re-password" id="re-password" type="password" >
+                                                    <input class="form-control" placeholder="nhập lại mật khẩu"
+                                                           name="re_password" id="re-password" type="password">
                                                 </div>
                                                 <span id="validate-password"></span>
                                             </div>
@@ -155,7 +161,8 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="input-group input-group-merge">
-                                                    <input class="form-control btn-outline-success" type="submit" value="Lưu">
+                                                    <input class="form-control btn-outline-success" type="submit"
+                                                           value="Lưu">
                                                 </div>
                                             </div>
                                         </div>

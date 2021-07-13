@@ -75,8 +75,8 @@
                                 }
                                 ?>
                                 <tr>
-                                    <td>{{ $i ++ }}</td>
-                                    <td id="center_id">{{ $center['name'] }}</td>
+                                    <td>{{ $center['center_id'] }}</td>
+                                    <td>{{ $center['name'] }}</td>
                                     <td>{{ $center['address'] }}</td>
                                     <td>{{  $center['user']['full_name'] }}</td>
                                     <td>
@@ -104,7 +104,7 @@
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.center.edit',$center['center_id']) }}">Sửa</a>
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.user.edit',$center['center_id']) }}">Xóa</a>
+                                                   href="{{ route('admin.center.delete',$center['center_id']) }}">Xóa</a>
                                             </div>
                                         </div>
                                     </td>

@@ -49,11 +49,11 @@ class Center extends Controller
         if ($request->center_id) {
             $checkName = $this->checkDuplicateName($request->name, $request->center_id);
             $data = \App\Models\Center::find($request->center_id);
-            $url = $this->getUrlRedirect($request->route()->getPrefix(), $checkName, $request->center_id);
+            $message = 'Trung tâm ' . $request->name . ' cập nhật thành công!';
         } else {
             $checkName = $this->checkDuplicateName($request->name);
             $data = new \App\Models\Center();
-            $url = $this->getUrlRedirect($request->route()->getPrefix(), $checkName);
+            $message = 'Tạo mới trung tâm ' . $request->name . 'thành công';
         }
         $data->status = $request->status ? $request->status : 0;
         $data->name = $request->name;
@@ -71,7 +71,7 @@ class Center extends Controller
             return redirect()->back()->with('failed', 'Trung tâm ' . $request->name . ' đã tồn tại!');
         } else {
             $data->save();
-            return redirect()->back()->with('success', 'Trung tâm ' . $request->name . ' cập nhật thành công!');
+            return redirect()->back()->with('success', $message);
         }
 
     }
@@ -202,5 +202,14 @@ class Center extends Controller
             'url' => route('admin.login')
         ];
         Mail::to($email)->send(new \App\Mail\Email($data, 'approve_center'));
+    }
+    public function delete($centerId){
+        $courses = \App\Models\Course::where('center_id',$centerId)->get()->toArray();
+        foreach ($courses as $course){
+            \App\Models\Course::find($course['course_id'])->delete();
+        }
+        $result = \App\Models\Center::find($centerId);
+        $result->forceDelete();
+        return redirect()->back()->with('success', 'Xóa thành công!');
     }
 }

@@ -31,12 +31,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.checkLogin']], functi
 
     Route::get('/danh-sach-nguoi-dung', 'Admin\User@index')->name('admin.user.index');
     Route::get('/thong-tin-nguoi-dung/{userId}', 'Admin\User@edit')->name('admin.user.edit');
+    Route::get('/xoa-nguoi-dung/{userId}', 'Admin\User@delete')->name('admin.user.delete');
     Route::get('/tao-moi-nguoi-dung', 'Admin\User@create')->name('admin.user.create');
     Route::post('/luu', 'Admin\User@save')->name('admin.user.save');
 
     Route::get('/tao-moi-trung-tam', 'Admin\Center@create')->name('admin.center.create');
     Route::get('/danh-sach-trung-tap', 'Admin\Center@index')->name('admin.center.index');
     Route::get('/thong-tin-trung-tam/{centerId}', 'Admin\Center@edit')->name('admin.center.edit');
+    Route::get('/xoa-trung-tam/{centerId}', 'Admin\Center@delete')->name('admin.center.delete');
     Route::post('/center/save', 'Admin\Center@save')->name('admin.center.save');
     Route::get('/danh-sach-khoa-hoc-cua-trung-tam/{centerId}', 'Admin\Course@index')->name('admin.center.course');
     Route::get('/yeu-cau-mo-trung-tam', 'Admin\Center@registerCenter')->name('admin.center.registerCenter');

@@ -63,16 +63,16 @@ class User extends Controller
         if ($request->user_id) {
             $checkEmail = $this->checkDuplicateEmail($request->email, $request->user_id);
             $data = \App\Models\User::find($request->user_id);
-            $url = $this->getUrlRedirect($request->route()->getPrefix(), $checkEmail, $request->user_id);
+            $message = 'Cập nhật tài khoản'.$request->email.' thành công!';
         } else {
             $checkEmail = $this->checkDuplicateEmail($request->email);
             $data = new \App\Models\User();
-            $url = $this->getUrlRedirect($request->route()->getPrefix(), $checkEmail);
+            $message = 'Tạo tài khoản'.$request->email.' thành công!';
         }
         if ($request->password) {
             $data->password = bcrypt($request->password);
             if ($request->password != $request->re_password){
-                return redirect($url)->with('failed', 'Hai mật khẩu ko khớp nhau!');
+                return redirect()->back()->with('failed', 'Hai mật khẩu ko khớp nhau!');
             }
         }
         $data->status = $request->status ? $request->status : 0;
@@ -85,10 +85,10 @@ class User extends Controller
             $data->avatar = $this->uploadAvatar($request->avatar);
         }
         if ($checkEmail) {
-            return redirect($url)->with('failed', 'Email ' . $request->email . ' đã được sử dụng!');
+            return redirect()->back()->with('failed', 'Email ' . $request->email . ' đã được sử dụng!');
         } else {
             $data->save();
-            return redirect($url)->with('success', 'Tài khoản ' . $request->email . ' cập nhật thành công!');
+            return redirect()->back()->with('success', $message);
         }
 
     }
@@ -147,5 +147,9 @@ class User extends Controller
             }
         }
         return $url;
+    }
+    public function delete($userId){
+        \App\Models\User::find($userId)->delete();
+        return redirect()->back()->with('success', 'Xóa thành công!');
     }
 }

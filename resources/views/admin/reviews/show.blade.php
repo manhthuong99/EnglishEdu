@@ -67,8 +67,8 @@
                             @foreach( $reviews as $key => $review)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $review['center']['name'] }}</td>
-                                    <td>{{ $review['user']['full_name'] }}</td>
+                                    <td>{{ isset($review['center']['name']) ? $review['center']['name'] : '' }}</td>
+                                    <td>{{ isset($review['user']['full_name']) ? $review['user']['full_name'] : '' }}</td>
                                     <td>
                                         @for($i = 0; $i < $review['rate']; $i ++)
                                             <div class="icon icon-shape text-yellow rounded-circle ml--4">

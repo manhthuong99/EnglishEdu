@@ -100,7 +100,7 @@
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.user.edit',$user->user_id) }}">Sửa</a>
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.user.edit',$user->user_id) }}">Xóa</a>
+                                                   href="{{ route('admin.user.delete',$user->user_id) }}">Xóa</a>
                                             </div>
                                         </div>
                                     </td>

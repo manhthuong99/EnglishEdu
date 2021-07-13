@@ -95,7 +95,7 @@ class Center extends Controller
             ->orderBy('english_center.ave_star', 'DESC')
             ->where('english_center.status', self::ENABLE);
         if ($request->search) {
-            $models->where('english_center.name', 'LIKE', "%{$request->search}%");
+            $models->where('english_center.name', 'LIKE', "%$request->search%");
         } else {
             $models->where('english_center.province_id', $request->province_id)
                 ->where('course.type', $request->type);
