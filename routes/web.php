@@ -95,7 +95,7 @@ Route::group(['prefix' => '/'],function () {
 
 
     Route::get('center/view/{centerId}','Center@index')->name('center.index');
-    Route::get('top-trung-tap/{page?}','Center@topCenter')->name('center.top');
+    Route::get('top-trung-tam/{page?}','Center@topCenter')->name('center.top');
     Route::get('trung-tam/{centerId}','Center@topCenter')->name('center.top');
     Route::get('trung-tam/{centerId}','Center@show')->name('center.detail');
     Route::post('danh-gia','Center@review')->name('center.review');

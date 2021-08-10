@@ -16,10 +16,12 @@
                         <div><span id="resultNum" class="text-prim bold">{{ $total }}</span> Kết quả.
                         </div>
                     </div>
-                    <div id="result-container" class="content-body__article">
-                        @foreach( $centers as $center)
+                    <div id="result-container" class="content-body__article col col-6">
+                        @foreach( $centers as $key => $center)
+                            <div style="display: flex">
+                            <div class=" col col-12">
                             <a href="{{ route('center.detail',$center['center_id']) }}"
-                               class="mdc-card border-b10 card-list-item fluid">
+                               class="mdc-card border-b6 card-list-item fluid">
                                 <div class="mdc-card__actions">
                                     <div class="course-block">
                                         <div class="course-block__info">
@@ -73,6 +75,66 @@
                                     </div>
                                 </div>
                             </a>
+                            </div>
+                            <div class=" col col-12">
+                                <a href="{{ route('center.detail',$center['center_id']) }}"
+                                   class="mdc-card border-b6 card-list-item fluid">
+                                    <div class="mdc-card__actions">
+                                        <div class="course-block">
+                                            <div class="course-block__info">
+                                                <div class="course-block__info-img">
+                                                    <div class="img-square-wrap">
+                                                        <picture>
+                                                            <img class="initial img-fluid lazy loaded"
+                                                                 src="{{ asset('storage/avatars/'.$center['avatar']) }}"
+                                                                 alt="Giao tiếp 4 kỹ năng - Starter (Pre-CE)"
+                                                                 data-ll-status="loaded">
+                                                        </picture>
+                                                    </div>
+                                                </div>
+                                                <div class="course-block__info-main short-description">
+                                                    <div class="flex">
+                                                        <div>
+                                                            <h3 class="title">{{ $center['name'] }}</h3>
+                                                            <div class="rating-group">
+                                                                <div class="rating-group">
+                                                                    <div
+                                                                        style="margin: 0.4rem 0.4rem 0.4rem 0; max-width: 30px">
+                                                                        <img class="initial fluid loading"
+                                                                             alt="Verified by Edu2Review"
+                                                                             src="{{ asset('frontend/img/icons/verify.svg') }}"
+                                                                             data-ll-status="loading">
+                                                                    </div>
+                                                                    @for($i = 0; $i < $center['ave_star']; $i ++)
+                                                                        <i class="fas fa-star text-yellow text-b"></i>
+                                                                    @endfor
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hide-sm-less">
+                                                        <div class="flex">
+                                                            <div>
+                                                                <div class="chip n70">
+                                                                    <span class="ni ni-square-pin"> </span>
+                                                                    <small> {{ $center['address'] }}</small>
+                                                                </div>
+                                                                <div class="chip n70">
+                                                                    <span class="ni ni-mobile-button"> </span>
+                                                                    <small> {{ $center['phone_number'] }}</small>
+                                                                </div>
+                                                            </div>
+                                                            <div class="divider-vertical"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            </div>
+
                         @endforeach
                         <ul class="pagination">
                             <li class="paginate_button page-item previous disabled" id="datatable-basic_previous"><a

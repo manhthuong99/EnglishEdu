@@ -92,7 +92,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button id="d-search-btn" class="button" type="submit" >
+                        <button id="d-search-btn2" class="button" type="submit" >
                             <span class="icon i-search n30"></span>
                         </button>
                     </div>

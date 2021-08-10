@@ -30,7 +30,7 @@ class Center extends Controller
             ->where('status', self::ENABLE);
         $data['total'] = $models->count();
         $data['centers'] = $models->offset($page * 10 + 10)
-            ->limit(10)
+            ->limit(20)
             ->get()->toArray();
         return view('frontend.center.top_center', $data);
     }
