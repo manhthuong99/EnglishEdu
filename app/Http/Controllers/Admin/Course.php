@@ -48,7 +48,7 @@ class Course extends Controller
         }
         $data['courses'] = \App\Models\Course::where('course_id', $courseId)
             ->get()->toArray();
-        return view('admin.course.edit', $data);
+        return view('admin.course.edit', $this->prepareCenter($data));
     }
 
     public function save(Request $request)
@@ -81,7 +81,7 @@ class Course extends Controller
         $data->input_requirement = $request->input_requirement;
         $data->input_point = $request->input_point;
         if ($data->save()) {
-            return redirect()->back()->with('success', 'Khóa học ' . $request->name . ' cập nhật thành công!');
+            return redirect(route('admin.course.edit', $data->course_id))->with('success', 'Khóa học ' . $request->name . ' cập nhật thành công!');
         } else {
             return redirect()->back()->with('failed', 'Khóa học ' . $request->name . ' cập nhật thất bại!');
         }
@@ -103,7 +103,7 @@ class Course extends Controller
                 ->where('status', self::ENABLE)
                 ->get()->toArray();
         }
-        return view('admin.course.create', $data);
+        return view('admin.course.create', $this->prepareCenter($data));
     }
 
     public function getUrlRedirect($preUrl, $id = null)
@@ -122,5 +122,24 @@ class Course extends Controller
             }
         }
         return $url;
+    }
+    public function prepareCenter($data){
+        $centers['centers'] = [];
+        foreach ($data['centers'] as $key => $center){
+            if ($key == 0){
+                $centers['centers'][$key] = $center;
+            }
+            else if ( $center['name'] != $data['centers'][$key-1]['name'] ){
+                $centers['centers'][$key] = $center;
+            }
+        }
+        if (isset( $data['courses'])){
+            $centers['courses'] = $data['courses'];
+        }
+        return $centers;
+    }
+    public function delete($courseId){
+        \App\Models\Course::find($courseId)->delete();
+        return redirect()->back()->with('success', 'Xóa thành công!');
     }
 }

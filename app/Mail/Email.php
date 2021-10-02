@@ -37,6 +37,8 @@ class Email extends Mailable
             {
                 return $this->view('mail.approve_center',$data);
             }
+            case 'consulting':
+                return $this->view('mail.consulting',$data);
         }
 
     }

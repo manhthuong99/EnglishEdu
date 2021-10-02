@@ -46,32 +46,37 @@ class Center extends Controller
 
     public function save(Request $request)
     {
-        if ($request->center_id) {
-            $checkName = $this->checkDuplicateName($request->name, $request->center_id);
-            $data = \App\Models\Center::find($request->center_id);
-            $message = 'Trung tâm ' . $request->name . ' cập nhật thành công!';
-        } else {
-            $checkName = $this->checkDuplicateName($request->name);
-            $data = new \App\Models\Center();
-            $message = 'Tạo mới trung tâm ' . $request->name . 'thành công';
-        }
-        $data->status = $request->status ? $request->status : 0;
-        $data->name = $request->name;
-        $data->email = $request->email;
-        $data->phone_number = $request->phone_number;
-        $data->description = $request->description;
-        $data->user_id = $request->user_id;
-        $data->province_id = $request->province_id;
-        $data->district_id = $request->district_id;
-        $data->address = $this->getAddress($request->address, $request->province, $request->district);
-        if ($request->avatar) {
-            $data->avatar = $this->uploadAvatar($request->avatar);
-        }
-        if ($checkName) {
-            return redirect()->back()->with('failed', 'Trung tâm ' . $request->name . ' đã tồn tại!');
-        } else {
-            $data->save();
-            return redirect()->back()->with('success', $message);
+        try {
+
+            if ($request->center_id) {
+                $checkName = $this->checkDuplicateName($request->name, $request->center_id);
+                $data = \App\Models\Center::find($request->center_id);
+                $message = 'Trung tâm ' . $request->name . ' cập nhật thành công!';
+            } else {
+                $checkName = $this->checkDuplicateName($request->name);
+                $data = new \App\Models\Center();
+                $message = 'Tạo mới trung tâm ' . $request->name . 'thành công';
+            }
+            $data->status = $request->status ? $request->status : 0;
+            $data->name = $request->name;
+            $data->email = $request->email;
+            $data->phone_number = $request->phone_number;
+            $data->description = $request->description;
+            $data->user_id = $request->user_id;
+            $data->province_id = $request->province_id;
+            $data->district_id = $request->district_id;
+            $data->address = $this->getAddress($request->address, $request->province, $request->district);
+            if ($request->avatar) {
+                $data->avatar = $this->uploadAvatar($request->avatar);
+            }
+            if ($checkName) {
+                return redirect()->back()->with('failed', 'Trung tâm ' . $request->name . ' đã tồn tại!');
+            } else {
+                $data->save();
+                return redirect(route('admin.center.edit',$data->center_id))->with('success', $message);
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('failed', 'Vui lòng kiểm tra lại thông tin');
         }
 
     }
@@ -203,9 +208,11 @@ class Center extends Controller
         ];
         Mail::to($email)->send(new \App\Mail\Email($data, 'approve_center'));
     }
-    public function delete($centerId){
-        $courses = \App\Models\Course::where('center_id',$centerId)->get()->toArray();
-        foreach ($courses as $course){
+
+    public function delete($centerId)
+    {
+        $courses = \App\Models\Course::where('center_id', $centerId)->get()->toArray();
+        foreach ($courses as $course) {
             \App\Models\Course::find($course['course_id'])->delete();
         }
         $result = \App\Models\Center::find($centerId);

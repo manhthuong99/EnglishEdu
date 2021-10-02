@@ -45,7 +45,7 @@ class User extends Controller
 
     public function index()
     {
-        $data['users'] = \App\Models\User::where('permission', self::USER_PERMISSION)
+        $data['users'] = \App\Models\User::where('permission', self::USER_PERMISSION)->where('is_delete', 0)
             ->get();
         echo view('admin.user.show', $data);
     }
@@ -63,11 +63,11 @@ class User extends Controller
         if ($request->user_id) {
             $checkEmail = $this->checkDuplicateEmail($request->email, $request->user_id);
             $data = \App\Models\User::find($request->user_id);
-            $message = 'Cập nhật tài khoản'.$request->email.' thành công!';
+            $message = 'Cập nhật tài khoản '.$request->email.' thành công!';
         } else {
             $checkEmail = $this->checkDuplicateEmail($request->email);
             $data = new \App\Models\User();
-            $message = 'Tạo tài khoản'.$request->email.' thành công!';
+            $message = 'Tạo tài khoản '.$request->email.' thành công!';
         }
         if ($request->password) {
             $data->password = bcrypt($request->password);
@@ -88,7 +88,7 @@ class User extends Controller
             return redirect()->back()->with('failed', 'Email ' . $request->email . ' đã được sử dụng!');
         } else {
             $data->save();
-            return redirect()->back()->with('success', $message);
+            return redirect(route('admin.user.edit',$data->user_id))->with('success', $message);
         }
 
     }
@@ -149,7 +149,10 @@ class User extends Controller
         return $url;
     }
     public function delete($userId){
-        \App\Models\User::find($userId)->delete();
+        $user = \App\Models\User::find($userId);
+        $user->is_delete = 1;
+        $user->status = 0;
+        $user->save();
         return redirect()->back()->with('success', 'Xóa thành công!');
     }
 }

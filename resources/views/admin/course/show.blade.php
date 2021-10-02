@@ -95,7 +95,7 @@
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.course.edit',$course['course_id']) }}">Sửa</a>
                                                 <a class="dropdown-item"
-                                                   href="{{ route('admin.user.edit',$course['course_id']) }}">Xóa</a>
+                                                   href="{{ route('admin.course.delete',$course['course_id']) }}">Xóa</a>
                                             </div>
                                         </div>
                                     </td>

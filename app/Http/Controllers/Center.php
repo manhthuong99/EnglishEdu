@@ -104,6 +104,21 @@ class Center extends Controller
         $data['total'] = $models->count('english_center.center_id');
         $data['centers'] = $models->limit(10)
             ->get()->toArray();
-        return view('frontend.center.top_center', $data);
+        return view('frontend.center.top_center', $this->prepareCenter($data));
+    }
+    public function prepareCenter($data){
+        $centers['centers'] = [];
+        foreach ($data['centers'] as $key => $center){
+            if ($key == 0){
+                $centers['centers'][$key] = $center;
+            }
+            else if ( $center['name'] != $data['centers'][$key-1]['name'] ){
+                $centers['centers'][$key] = $center;
+            }
+        }
+        if (isset( $data['total'])){
+            $centers['total'] = count($data);
+        }
+        return $centers;
     }
 }

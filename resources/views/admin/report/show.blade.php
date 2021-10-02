@@ -28,9 +28,6 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-lg-6 col-5 text-right">
-                        <a href="{{ route('admin.center.create') }}" class="btn btn-lg btn-neutral">Tạo mới</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -65,13 +62,12 @@
                             <tbody>
                             @foreach( $reports as $key => $report)
                                 <tr>
+                                    @if(isset($report['user']['full_name']) && isset($report['center']['name']))
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $report['center']['name'] }}</td>
-                                    @if(isset($report['user']['full_name']))
+
                                         <td>{{ $report['user']['full_name'] }}</td>
-                                    @else
-                                        <td></td>
-                                    @endif
+
                                     <td style="white-space: pre-wrap">{{ $report['content'] }}</td>
                                     <td>{{ date("d/m/Y H:m:s", strtotime($report['created_at'])) }}</td>
                                     <td>
@@ -87,6 +83,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

@@ -98,9 +98,9 @@
                                         </span>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                                                  style="width: 100px">
-                                                <a class="dropdown-item"
-                                                   href="{{ route('admin.center.course',$center['center_id']) }}">Xem
-                                                    các khóa học</a>
+{{--                                                <a class="dropdown-item"--}}
+{{--                                                   href="{{ route('admin.center.course',$center['center_id']) }}">Xem--}}
+{{--                                                    các khóa học</a>--}}
                                                 <a class="dropdown-item"
                                                    href="{{ route('admin.center.edit',$center['center_id']) }}">Sửa</a>
                                                 <a class="dropdown-item"
@@ -176,9 +176,9 @@
                                         </span>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                                                          style="width: 100px">
-                                                        <a class="dropdown-item"
-                                                           href="#myModal" data-toggle="modal"
-                                                           data-target=".bd-example-modal-lg">Xem các khóa học</a>
+{{--                                                        <a class="dropdown-item"--}}
+{{--                                                           href="#myModal" data-toggle="modal"--}}
+{{--                                                           data-target=".bd-example-modal-lg">Xem các khóa học</a>--}}
                                                         <a class="dropdown-item"
                                                            href="{{ route('admin.center.edit',$center['center_id']) }}">Sửa</a>
                                                         <a class="dropdown-item"

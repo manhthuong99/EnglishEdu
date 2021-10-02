@@ -100,7 +100,7 @@
                         <div class="collapse" id="navbar-forms">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/forms/elements.html" class="nav-link"><i class="ni ni-bold-right"></i>Tạo mới</a>
+                                    <a href="{{ route('admin.course.create') }}" class="nav-link"><i class="ni ni-bold-right"></i>Tạo mới</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('admin.course.index') }}" class="nav-link"><i class="ni ni-bullet-list-67"></i>Danh sách</a>
@@ -212,7 +212,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="">
+                           href="#">
                             <i class="ni ni-ui-04"></i>
                             <span class="nav-link-text">Cài đặt</span>
                         </a>

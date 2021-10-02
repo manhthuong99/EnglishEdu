@@ -49,6 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.checkLogin']], functi
     Route::get('/tao-moi-khoa-hoc', 'Admin\Course@create')->name('admin.course.create');
     Route::post('/course/save', 'Admin\Course@save')->name('admin.course.save');
     Route::get('/thong-tin-khoa-hoc/{courseId}', 'Admin\Course@edit')->name('admin.course.edit');
+    Route::get('/xoa-khoa-hoc/{courseId}', 'Admin\Course@delete')->name('admin.course.delete');
 
     Route::get('/danh-gia', 'Admin\Review@index')->name('admin.review.index');
     Route::get('/review/delete/{reviewId}', 'Admin\Review@delete')->name('admin.review.delete');
